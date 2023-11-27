@@ -35,13 +35,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.Artifact;
 import com.shatteredpixel.shatteredpixeldungeon.items.rings.Ring;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfTransmutation;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.Weapon;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.FrostGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GrenadeLauncher;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GrenadeLauncherAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GrenadeLauncherHP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ParalysisGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SleepGun;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Catalog;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
@@ -68,13 +62,7 @@ public class Evolution extends InventorySpell {
                 return false;
             }
         }
-        return (item instanceof MeleeWeapon
-                && (!(item instanceof GrenadeLauncher))
-                && (!(item instanceof GrenadeLauncherAP))
-                && (!(item instanceof GrenadeLauncherHP))
-                && (!(item instanceof SleepGun))
-                && (!(item instanceof FrostGun))
-                && (!(item instanceof ParalysisGun)));
+        return (item instanceof MeleeWeapon);
     }
 
     @Override

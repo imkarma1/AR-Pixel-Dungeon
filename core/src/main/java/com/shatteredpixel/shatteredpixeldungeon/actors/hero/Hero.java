@@ -164,7 +164,6 @@ import com.shatteredpixel.shatteredpixeldungeon.effects.particles.FlameParticle;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.PoisonParticle;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.ShadowParticle;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.SparkParticle;
-import com.shatteredpixel.shatteredpixeldungeon.items.Amulet;
 import com.shatteredpixel.shatteredpixeldungeon.items.Ankh;
 import com.shatteredpixel.shatteredpixeldungeon.items.Dewdrop;
 import com.shatteredpixel.shatteredpixeldungeon.items.EquipableItem;
@@ -232,9 +231,9 @@ import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.exotic.ScrollOfCha
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.Wand;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfBlastWave;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfLivingEarth;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.CorrosionBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.GoldenBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.NaturesBow;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.CorrosionBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.SpiritBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.Weapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.WindBow;
@@ -243,65 +242,43 @@ import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Bloomi
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Kinetic;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Lucky;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Shocking;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AntimaterRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AssultRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AutoHandgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AutoRifle;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Ballista;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.BattleAxe;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.BeamSaber;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Bible;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Carbine;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ChainFlail;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ChainWhip;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Crossbow;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.CrudePistol;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.DoubleDagger;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.DoubleGreatSword;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.DualPistol;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ElectroScimitar;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ExplosiveCrossbow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Flail;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.FlameScimitar;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.FlameThrower;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ForceGlove;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.FrostScimitar;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Gauntlet;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GildedShovel;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Gloves;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Gloves_Energy;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GoldenPistol;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Greataxe;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Greatsword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HandAxe;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Handgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HeavyMachinegun;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HolySword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HugeSword;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HuntingRifle;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.IronHammer;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.KSG;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.KSGAP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Lance;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.LanceNShield;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.LargeSword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Longsword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Mace;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MagesStaff;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Magnum;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MarksmanRifle;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MinersTool;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MiniGun;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Nunchaku;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ObsidianShield;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Pistol;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.PlasmaCannon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.PoisonScimitar;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Quarterstaff;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RPG7;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Revolver;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RocketLauncher;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RoundShield;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RunicBlade;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Saber;
@@ -309,23 +286,16 @@ import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Saber_Energy;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Sai;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Scimitar;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Shortsword;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ShotGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ShotGunAP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Shovel;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SniperRifle;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Spade;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.spellbook.SpellBook;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SubMachinegun;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Sword;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TacticalHandgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TacticalShield;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TrueRunicBlade;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.UnholyBible;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WA2000;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WarHammer;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Whip;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WornShortsword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WornShortsword_Energy;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.spellbook.SpellBook;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.spellbook.SpellBook_Disintegration;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Document;
@@ -785,57 +755,8 @@ public class Hero extends Char {
 
 			if (Dungeon.level.adjacent( pos, target.pos )) {
 				accMulti = (0.5f + 0.2f*pointsInTalent(Talent.POINT_BLANK));
-				if ((wep instanceof ShotGun.Bullet && !(equippedWep instanceof ShotGunAP))
-						|| (wep instanceof KSG.Bullet && !(equippedWep instanceof KSGAP))) {
-					accMulti += 3;
-				}
-				if (wep instanceof Revolver.Bullet
-						|| wep instanceof HuntingRifle.Bullet
-						|| wep instanceof Carbine.Bullet
-						|| wep instanceof SniperRifle.Bullet
-						|| wep instanceof AntimaterRifle.Bullet
-						|| wep instanceof MarksmanRifle.Bullet
-						|| wep instanceof WA2000.Bullet){
-					accMulti = 0;
-				}
 			} else {
 				accMulti = 1.5f;
-				if (wep instanceof Revolver.Bullet
-						|| wep instanceof Carbine.Bullet
-						|| wep instanceof SniperRifle.Bullet
-						|| wep instanceof AntimaterRifle.Bullet
-						|| wep instanceof MarksmanRifle.Bullet
-						|| wep instanceof WA2000.Bullet) {
-					accMulti = 2f;
-				}
-				if (wep instanceof CrudePistol.Bullet
-						|| wep instanceof Pistol.Bullet
-						|| wep instanceof GoldenPistol.Bullet
-						|| wep instanceof Handgun.Bullet
-						|| wep instanceof Magnum.Bullet
-						|| wep instanceof AutoHandgun.Bullet
-						|| wep instanceof DualPistol.Bullet
-						|| wep instanceof SubMachinegun.Bullet
-						|| wep instanceof AssultRifle.Bullet
-						|| wep instanceof HeavyMachinegun.Bullet
-						|| wep instanceof AutoRifle.Bullet
-						|| wep instanceof MiniGun.Bullet
-						|| wep instanceof RocketLauncher.Rocket
-						|| wep instanceof ShotGun.Bullet
-						|| wep instanceof KSG.Bullet
-				) {
-					accMulti = 1f;
-				}
-				if ((wep instanceof ShotGun.Bullet && !(equippedWep instanceof ShotGunAP))
-						|| (wep instanceof KSG.Bullet && !(equippedWep instanceof KSGAP))) {
-					accMulti = 0;
-				}
-				if (wep instanceof TacticalHandgun.Bullet) {
-					accMulti = 1.3f;
-				}
-				if (wep instanceof TacticalShield.Bullet) {
-					accMulti = 0.7f;
-				}
 			}
 
 			accuracy *= accMulti;
@@ -1161,21 +1082,6 @@ public class Hero extends Char {
 		if (STR() < ((Weapon)w).STRReq())       return false;
 		if (w instanceof Flail)                 return false;
 		if (w instanceof ChainFlail)        	return false;
-		if (w instanceof MiniGun.Bullet)		return false;
-		if (w instanceof ShotGun.Bullet) {
-			if (belongings.weapon instanceof ShotGunAP) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-		if (w instanceof KSG.Bullet){
-			if (belongings.weapon instanceof KSGAP) {
-				return true;
-			} else {
-				return false;
-			}
-		}
 
 		return super.canSurpriseAttack();
 	}
@@ -2580,88 +2486,6 @@ public class Hero extends Char {
 
 			if (subClass == HeroSubClass.FREERUNNER){
 				Buff.affect(this, Momentum.class).gainStack();
-			}
-
-			if (hero.hasTalent(Talent.QUICK_RELOAD)) {
-				int chance = 2*hero.pointsInTalent(Talent.QUICK_RELOAD);
-				KindOfWeapon wep = hero.belongings.weapon;
-				if (wep instanceof CrudePistol && Random.Int(100) < chance) {
-					((CrudePistol)wep).oneReload();
-
-				} else if (wep instanceof Pistol && Random.Int(100) < chance) {
-					((Pistol)wep).oneReload();
-
-				} else if (wep instanceof GoldenPistol && Random.Int(100) < chance) {
-					((GoldenPistol)wep).oneReload();
-
-				} else if (wep instanceof Handgun && Random.Int(100) < chance) {
-					((Handgun)wep).oneReload();
-
-				} else if (wep instanceof Magnum && Random.Int(100) < chance) {
-					((Magnum)wep).oneReload();
-
-				} else if (wep instanceof TacticalHandgun && Random.Int(100) < chance) {
-					((TacticalHandgun)wep).oneReload();
-
-				} else if (wep instanceof AutoHandgun && Random.Int(100) < chance) {
-					((AutoHandgun)wep).oneReload();
-
-				} else if (wep instanceof DualPistol && Random.Int(100) < chance*3) {
-					((DualPistol)wep).oneReload();
-
-				} else if (wep instanceof SubMachinegun && Random.Int(100) < chance*3) {
-					((SubMachinegun)wep).oneReload();
-
-				} else if (wep instanceof AssultRifle && Random.Int(100) < chance*3) {
-					((AssultRifle)wep).oneReload();
-
-				} else if (wep instanceof HeavyMachinegun && Random.Int(100) < chance*3) {
-					((HeavyMachinegun)wep).oneReload();
-
-				} else if (wep instanceof MiniGun && Random.Int(100) < chance*3) {
-					((MiniGun)wep).oneReload();
-
-				} else if (wep instanceof Revolver && Random.Int(100) < chance/2) {
-					((Revolver)wep).oneReload();
-
-				} else if (wep instanceof HuntingRifle && Random.Int(100) < chance/2) {
-					((HuntingRifle)wep).oneReload();
-
-				} else if (wep instanceof Carbine && Random.Int(100) < chance/2) {
-					((Carbine)wep).oneReload();
-
-				} else if (wep instanceof SniperRifle && Random.Int(100) < chance/2) {
-					((SniperRifle)wep).oneReload();
-
-				} else if (wep instanceof AntimaterRifle && Random.Int(100) < chance/2) {
-					((AntimaterRifle)wep).oneReload();
-
-				} else if (wep instanceof WA2000 && Random.Int(100) < chance/2) {
-					((WA2000)wep).oneReload();
-
-				} else if (wep instanceof MarksmanRifle && Random.Int(100) < chance/2) {
-					((MarksmanRifle)wep).oneReload();
-
-				} else if (wep instanceof ShotGun && Random.Int(100) < chance/2) {
-					((ShotGun)wep).oneReload();
-
-				} else if (wep instanceof KSG && Random.Int(100) < chance/2) {
-					((KSG)wep).oneReload();
-
-				} else if (wep instanceof PlasmaCannon && Random.Int(100) < chance/2) {
-					((PlasmaCannon)wep).oneReload();
-
-				} else if (wep instanceof FlameThrower && Random.Int(100) < chance/2) {
-					((FlameThrower)wep).oneReload();
-
-				} else if (wep instanceof RocketLauncher && Random.Int(100) < chance/2) {
-					((RocketLauncher)wep).oneReload();
-
-				} else if (wep instanceof RPG7 && Random.Int(100) < chance/2) {
-					((RPG7)wep).oneReload();
-
-				}
-				updateQuickslot();
 			}
 
 			if ((hero.belongings.weapon instanceof Lance ||

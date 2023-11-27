@@ -42,52 +42,18 @@ import com.shatteredpixel.shatteredpixeldungeon.items.KindOfWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.bags.Bag;
 import com.shatteredpixel.shatteredpixeldungeon.items.bags.MagicalHolster;
 import com.shatteredpixel.shatteredpixeldungeon.items.rings.RingOfSharpshooting;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.CorrosionBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.GoldenBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.NaturesBow;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.CorrosionBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.SpiritBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.Weapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.WindBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Projecting;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AntimaterRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AssultRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AutoHandgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AutoRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Carbine;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.CrudePistol;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.DualPistol;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.FlameThrower;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.FlameThrowerAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.FlameThrowerHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.FrostGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GoldenPistol;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GrenadeLauncher;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GrenadeLauncherAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GrenadeLauncherHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Handgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HeavyMachinegun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HuntingRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.KSG;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Magnum;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MarksmanRifle;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MiniGun;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MissileButton;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ParalysisGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Pistol;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.PlasmaCannon;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.PlasmaCannonAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.PlasmaCannonHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RPG7;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Revolver;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RocketLauncher;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ShotGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SleepGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SniperRifle;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.spellbook.SpellBook_Disintegration;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SubMachinegun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TacticalHandgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WA2000;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.darts.Dart;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
@@ -202,11 +168,7 @@ abstract public class MissileWeapon extends Weapon {
 
 		boolean projecting = hasEnchant(Projecting.class, user);
 		if (this instanceof PlasmaCannon.Bullet
-		||	this instanceof PlasmaCannonAP.Bullet
-		||	this instanceof PlasmaCannonHP.Bullet
 		||	this instanceof FlameThrower.Bullet
-		||	this instanceof FlameThrowerAP.Bullet
-		||	this instanceof FlameThrowerHP.Bullet
 		||	this instanceof MissileButton.Rocket) {
 			projecting = true;
 		}
@@ -243,51 +205,6 @@ abstract public class MissileWeapon extends Weapon {
 				if (bow5 != null && bow5.hasEnchant(Projecting.class, user)) {
 					projecting = true;
 				}
-			}
-		}
-		if ((this instanceof CrudePistol.Bullet
-				|| this instanceof Pistol.Bullet
-				|| this instanceof GoldenPistol.Bullet
-				|| this instanceof Handgun.Bullet
-				|| this instanceof Magnum.Bullet
-				|| this instanceof TacticalHandgun.Bullet
-				|| this instanceof AutoHandgun.Bullet
-
-				|| this instanceof DualPistol.Bullet
-				|| this instanceof SubMachinegun.Bullet
-				|| this instanceof AssultRifle.Bullet
-				|| this instanceof HeavyMachinegun.Bullet
-				|| this instanceof MiniGun.Bullet
-				|| this instanceof AutoRifle.Bullet
-
-				|| this instanceof Revolver.Bullet
-				|| this instanceof HuntingRifle.Bullet
-				|| this instanceof Carbine.Bullet
-				|| this instanceof SniperRifle.Bullet
-				|| this instanceof AntimaterRifle.Bullet
-				|| this instanceof MarksmanRifle.Bullet
-				|| this instanceof WA2000.Bullet
-
-				|| this instanceof ShotGun.Bullet
-				|| this instanceof KSG.Bullet
-
-				|| this instanceof RocketLauncher.Rocket
-				|| this instanceof RPG7.Rocket
-
-				|| this instanceof GrenadeLauncher.Rocket
-				|| this instanceof GrenadeLauncherAP.Rocket
-				|| this instanceof GrenadeLauncherHP.Rocket
-				|| this instanceof SleepGun.Dart
-				|| this instanceof ParalysisGun.Dart
-				|| this instanceof FrostGun.Dart)
-				&& user.hasTalent(Talent.STREET_BATTLE)){
-			if (!Dungeon.level.solid[dst]
-					&& Dungeon.level.distance(user.pos, dst) <= ((projecting) ? 4+user.pointsInTalent(Talent.STREET_BATTLE) : 1+user.pointsInTalent(Talent.STREET_BATTLE))
-					&& user.buff(Talent.StreetBattleCooldown.class) == null){
-				Buff.affect(user, Talent.StreetBattleCooldown.class, 40-10*Dungeon.hero.pointsInTalent(Talent.STREET_BATTLE));
-				return dst;
-			} else {
-				return super.throwPos(user, dst);
 			}
 		}
 

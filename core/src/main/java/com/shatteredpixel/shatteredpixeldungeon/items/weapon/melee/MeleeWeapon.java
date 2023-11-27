@@ -140,15 +140,6 @@ public class MeleeWeapon extends Weapon {
 	@Override
 	public void execute(Hero hero, String action) {
 		super.execute(hero, action);
-		if ((this instanceof GrenadeLauncher ||
-			this instanceof GrenadeLauncherAP ||
-			this instanceof GrenadeLauncherHP ||
-			this instanceof SleepGun ||
-			this instanceof FrostGun ||
-			this instanceof ParalysisGun) && action.equals(AC_ABILITY)) {
-			execute(hero, defaultAction);
-			return;
-		}
 		if (action.equals(AC_ABILITY)){
 			usesTargeting = false;
 			if (!isEquipped(hero)) {

@@ -34,61 +34,17 @@ import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.KindOfWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.Artifact;
 import com.shatteredpixel.shatteredpixeldungeon.items.rings.Ring;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.CorrosionBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.GoldenBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.NaturesBow;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.CorrosionBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.SpiritBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.Weapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.WindBow;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AntimaterRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AntimaterRifleAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AntimaterRifleHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AssassinsBlade;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.BeamSaber;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ChainWhip;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Crossbow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ExplosiveCrossbow;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Gauntlet;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GildedShovel;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Glaive;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Greataxe;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Greatshield;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HeavyMachinegun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HeavyMachinegunAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HeavyMachinegunHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HugeSword;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.IronHammer;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.KSG;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.KSGAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.KSGHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Lance;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.LargeKatana;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Magnum;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MagnumAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MagnumHP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MiniGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MiniGunAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MiniGunHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ObsidianShield;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RPG7;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RocketLauncher;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RunicBlade;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SharpKatana;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ShotGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ShotGunAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ShotGunHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Shovel;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SniperRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SniperRifleAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SniperRifleHP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Spade;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TacticalHandgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TacticalHandgunAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TacticalHandgunHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TrueRunicBlade;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.UnformedBlade;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WarHammer;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Catalog;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
@@ -219,145 +175,146 @@ public class AdvancedEvolution extends InventorySpell {
         //Gus Success Rate for Gunner: 100%
 
         Weapon n;
-        if (w instanceof SniperRifle) {
-            if (w instanceof SniperRifleAP) {
-                if (Random.Float() < getGunChance()) {
-                    n = new AntimaterRifleAP();
-                } else {
-                    n = Generator.randomWeapon();
-                }
-            } else if (w instanceof SniperRifleHP) {
-                if (Random.Float() < getGunChance()) {
-                    n = new AntimaterRifleHP();
-                } else {
-                    n = Generator.randomWeapon();
-                }
-            } else {
-                if (Random.Float() < getGunChance()) {
-                    n = new AntimaterRifle();
-                } else {
-                    n = Generator.randomWeapon();
-                }
-            }
-        } else if (w instanceof HeavyMachinegun) {
-            if (w instanceof HeavyMachinegunAP) {
-                if (Random.Float() < getGunChance()) {
-                    n = new MiniGunAP();
-                } else {
-                    n = Generator.randomWeapon();
-                }
-            } else if (w instanceof HeavyMachinegunHP) {
-                if (Random.Float() < getGunChance()) {
-                    n = new MiniGunHP();
-                } else {
-                    n = Generator.randomWeapon();
-                }
-            } else {
-                if (Random.Float() < getGunChance()) {
-                    n = new MiniGun();
-                } else {
-                    n = Generator.randomWeapon();
-                }
-            }
-        } else if (w instanceof Magnum) {
-            if (w instanceof MagnumAP) {
-                if (Random.Float() < getGunChance()) {
-                    n = new TacticalHandgunAP();
-                } else {
-                    n = Generator.randomWeapon();
-                }
-            } else if (w instanceof MagnumHP) {
-                if (Random.Float() < getGunChance()) {
-                    n = new TacticalHandgunHP();
-                } else {
-                    n = Generator.randomWeapon();
-                }
-            } else {
-                if (Random.Float() < getGunChance()) {
-                    n = new TacticalHandgun();
-                } else {
-                    n = Generator.randomWeapon();
-                }
-            }
-        } else if (w instanceof ShotGun) {
-            if (w instanceof ShotGunAP) {
-                if (Random.Float() < getGunChance()) {
-                    n = new KSGAP();
-                } else {
-                    n = Generator.randomWeapon();
-                }
-            } else if (w instanceof ShotGunHP) {
-                if (Random.Float() < getGunChance()) {
-                    n = new KSGHP();
-                } else {
-                    n = Generator.randomWeapon();
-                }
-            } else {
-                if (Random.Float() < getGunChance()) {
-                    n = new KSG();
-                } else {
-                    n = Generator.randomWeapon();
-                }
-            }
-        } else if (w instanceof RocketLauncher) {
-            if (Random.Float() < getGunChance()) {
-                n = new RPG7();
-            } else {
-                n = Generator.randomWeapon();
-            }
-        } else if (w instanceof LargeKatana) {
-            if (Random.Float() < getWepChance()) {
-                n = new SharpKatana();
-            } else {
-                n = Generator.randomWeapon();
-            }
-        } else if (w instanceof Glaive) {
-            if (Random.Float() < getWepChance()) {
-                n = new Lance();
-            } else {
-                n = Generator.randomWeapon();
-            }
-        } else if (w instanceof Greatshield) {
-            if (Random.Float() < getWepChance()) {
-                n = new ObsidianShield();
-            } else {
-                n = Generator.randomWeapon();
-            }
-        } else if (w instanceof RunicBlade){
-            if (Random.Float() < getWepChance()) {
-                n = new TrueRunicBlade();
-            } else {
-                n = Generator.randomWeapon();
-            }
-        } else if (w instanceof AssassinsBlade){
-            if (Random.Float() < getWepChance()) {
-                n = new UnformedBlade();
-            } else {
-                n = Generator.randomWeapon();
-            }
-        } else if (w instanceof GildedShovel) {
-            n = new Spade();
-        } else if (w instanceof Shovel) {
-            n = new GildedShovel();
-        } else if (w instanceof Greataxe) {
-            if (Random.Float() < getWepChance()) {
-                n = new HugeSword();
-            } else {
-                n = Generator.randomWeapon();
-            }
-        } else if (w instanceof WarHammer) {
-            if (Random.Float() < getWepChance()) {
-                n = new IronHammer();
-            } else {
-                n = Generator.randomWeapon();
-            }
-        } else if (w instanceof Gauntlet) {
-            if (Random.Float() < getWepChance()) {
-                n = new BeamSaber();
-            } else {
-                n = Generator.randomWeapon();
-            }
-        } else if (w instanceof SpiritBow) {
+//        if (w instanceof SniperRifle) {
+//            if (w instanceof SniperRifleAP) {
+//                if (Random.Float() < getGunChance()) {
+//                    n = new AntimaterRifleAP();
+//                } else {
+//                    n = Generator.randomWeapon();
+//                }
+//            } else if (w instanceof SniperRifleHP) {
+//                if (Random.Float() < getGunChance()) {
+//                    n = new AntimaterRifleHP();
+//                } else {
+//                    n = Generator.randomWeapon();
+//                }
+//            } else {
+//                if (Random.Float() < getGunChance()) {
+//                    n = new AntimaterRifle();
+//                } else {
+//                    n = Generator.randomWeapon();
+//                }
+//            }
+//        } else if (w instanceof HeavyMachinegun) {
+//            if (w instanceof HeavyMachinegunAP) {
+//                if (Random.Float() < getGunChance()) {
+//                    n = new MiniGunAP();
+//                } else {
+//                    n = Generator.randomWeapon();
+//                }
+//            } else if (w instanceof HeavyMachinegunHP) {
+//                if (Random.Float() < getGunChance()) {
+//                    n = new MiniGunHP();
+//                } else {
+//                    n = Generator.randomWeapon();
+//                }
+//            } else {
+//                if (Random.Float() < getGunChance()) {
+//                    n = new MiniGun();
+//                } else {
+//                    n = Generator.randomWeapon();
+//                }
+//            }
+//        } else if (w instanceof Magnum) {
+//            if (w instanceof MagnumAP) {
+//                if (Random.Float() < getGunChance()) {
+//                    n = new TacticalHandgunAP();
+//                } else {
+//                    n = Generator.randomWeapon();
+//                }
+//            } else if (w instanceof MagnumHP) {
+//                if (Random.Float() < getGunChance()) {
+//                    n = new TacticalHandgunHP();
+//                } else {
+//                    n = Generator.randomWeapon();
+//                }
+//            } else {
+//                if (Random.Float() < getGunChance()) {
+//                    n = new TacticalHandgun();
+//                } else {
+//                    n = Generator.randomWeapon();
+//                }
+//            }
+//        } else if (w instanceof ShotGun) {
+//            if (w instanceof ShotGunAP) {
+//                if (Random.Float() < getGunChance()) {
+//                    n = new KSGAP();
+//                } else {
+//                    n = Generator.randomWeapon();
+//                }
+//            } else if (w instanceof ShotGunHP) {
+//                if (Random.Float() < getGunChance()) {
+//                    n = new KSGHP();
+//                } else {
+//                    n = Generator.randomWeapon();
+//                }
+//            } else {
+//                if (Random.Float() < getGunChance()) {
+//                    n = new KSG();
+//                } else {
+//                    n = Generator.randomWeapon();
+//                }
+//            }
+//        } else if (w instanceof RocketLauncher) {
+//            if (Random.Float() < getGunChance()) {
+//                n = new RPG7();
+//            } else {
+//                n = Generator.randomWeapon();
+//            }
+//        } else if (w instanceof LargeKatana) {
+//            if (Random.Float() < getWepChance()) {
+//                n = new SharpKatana();
+//            } else {
+//                n = Generator.randomWeapon();
+//            }
+//        } else if (w instanceof Glaive) {
+//            if (Random.Float() < getWepChance()) {
+//                n = new Lance();
+//            } else {
+//                n = Generator.randomWeapon();
+//            }
+//        } else if (w instanceof Greatshield) {
+//            if (Random.Float() < getWepChance()) {
+//                n = new ObsidianShield();
+//            } else {
+//                n = Generator.randomWeapon();
+//            }
+//        } else if (w instanceof RunicBlade){
+//            if (Random.Float() < getWepChance()) {
+//                n = new TrueRunicBlade();
+//            } else {
+//                n = Generator.randomWeapon();
+//            }
+//        } else if (w instanceof AssassinsBlade){
+//            if (Random.Float() < getWepChance()) {
+//                n = new UnformedBlade();
+//            } else {
+//                n = Generator.randomWeapon();
+//            }
+//        } else if (w instanceof GildedShovel) {
+//            n = new Spade();
+//        } else if (w instanceof Shovel) {
+//            n = new GildedShovel();
+//        } else if (w instanceof Greataxe) {
+//            if (Random.Float() < getWepChance()) {
+//                n = new HugeSword();
+//            } else {
+//                n = Generator.randomWeapon();
+//            }
+//        } else if (w instanceof WarHammer) {
+//            if (Random.Float() < getWepChance()) {
+//                n = new IronHammer();
+//            } else {
+//                n = Generator.randomWeapon();
+//            }
+//        } else if (w instanceof Gauntlet) {
+//            if (Random.Float() < getWepChance()) {
+//                n = new BeamSaber();
+//            } else {
+//                n = Generator.randomWeapon();
+//            }
+//        } else
+        if (w instanceof SpiritBow) {
             switch (Random.Int(4)) {
                 case 0:
                 default:

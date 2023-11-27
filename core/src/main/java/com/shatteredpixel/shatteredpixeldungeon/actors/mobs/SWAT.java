@@ -24,10 +24,6 @@ package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Light;
-import com.shatteredpixel.shatteredpixeldungeon.items.Item;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AntimaterRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TacticalHandgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MiniGun;
 import com.shatteredpixel.shatteredpixeldungeon.mechanics.Ballistica;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.SWATSprite;
@@ -131,16 +127,10 @@ public class SWAT extends Mob {
 		}
 	}
 
-	@Override
-	public Item createLoot(){
-		if (swatWeapon == SWATWeapon.SNIPER) {
-			return new AntimaterRifle().upgrade(1+Random.Int(3)).identify();
-		} else if (swatWeapon == SWATWeapon.HANDGUN) {
-			return new TacticalHandgun().upgrade(1+Random.Int(3)).identify();
-		} else {
-			return new MiniGun().upgrade(1+Random.Int(3)).identify();
-		}
-	}
+//	@Override
+//	public Item createLoot(){
+//
+//	}
 
 	@Override
 	public String description() {

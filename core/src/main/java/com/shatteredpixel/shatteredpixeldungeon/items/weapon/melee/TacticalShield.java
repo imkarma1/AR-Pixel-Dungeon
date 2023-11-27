@@ -257,51 +257,7 @@ public class TacticalShield extends MeleeWeapon {
 
     @Override
     public String info() {
-
-        max_round = 2;
-        if (Dungeon.hero.hasTalent(Talent.LARGER_MAGAZINE)) {
-            max_round += 1f * Dungeon.hero.pointsInTalent(Talent.LARGER_MAGAZINE);
-        }
-        reload_time = 4f* RingOfReload.reloadMultiplier(Dungeon.hero);
         String info = super.info();
-
-        if (levelKnown) {
-            info += "\n\n" + Messages.get(CrudePistol.class, "stats_known",
-                    Bulletmin(this.buffedLvl()),
-                    Bulletmax(this.buffedLvl()),
-                    round, max_round, new DecimalFormat("#.##").format(reload_time));
-        } else {
-            info += "\n\n" + Messages.get(CrudePistol.class, "stats_unknown",
-                    Bulletmin(0),
-                    Bulletmax(0),
-                    round, max_round, new DecimalFormat("#.##").format(reload_time));
-        }
-
-        if (silencer) {
-            info += "\n\n" + Messages.get(CrudePistol.class, "silencer");
-        }
-        if (short_barrel) {
-            info += "\n\n" + Messages.get(CrudePistol.class, "short_barrel");
-        }
-        if (long_barrel) {
-            info += "\n\n" + Messages.get(CrudePistol.class, "long_barrel");
-        }
-        if (magazine) {
-            info += "\n\n" + Messages.get(CrudePistol.class, "magazine");
-        }
-        if (light) {
-            info += "\n\n" + Messages.get(CrudePistol.class, "light");
-        }
-        if (heavy) {
-            info += "\n\n" + Messages.get(CrudePistol.class, "heavy");
-        }
-        if (flash) {
-            info += "\n\n" + Messages.get(CrudePistol.class, "flash");
-        }
-
-        if (Dungeon.isChallenged(Challenges.DURABILITY) && levelKnown) {
-            info += "\n\n" + Messages.get(Item.class, "durability_weapon", durability(), maxDurability());
-        }
 
         return info;
     }

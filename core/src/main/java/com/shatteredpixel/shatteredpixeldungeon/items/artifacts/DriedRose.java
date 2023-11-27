@@ -21,8 +21,6 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.items.artifacts;
 
-import static com.shatteredpixel.shatteredpixeldungeon.Dungeon.level;
-
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.ShatteredPixelDungeon;
@@ -54,27 +52,10 @@ import com.shatteredpixel.shatteredpixeldungeon.items.rings.RingOfEnergy;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfRetribution;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.exotic.ScrollOfPsionicBlast;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.Weapon;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AntimaterRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AssultRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AutoHandgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AutoRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Carbine;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.CrudePistol;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.DualPistol;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GoldenPistol;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Handgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HeavyMachinegun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HuntingRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Magnum;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MarksmanRifle;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MiniGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Pistol;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Revolver;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SniperRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SubMachinegun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TacticalHandgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WA2000;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.gun.handgun.HG;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.gun.machinegun.MG;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.gun.snipergun.SR;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.AlchemyScene;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.CellSelector;
@@ -263,26 +244,9 @@ public class DriedRose extends Artifact {
 		}
 
 		if (weapon != null) {
-			if (weapon instanceof CrudePistol
-			 || weapon instanceof Pistol
-			 || weapon instanceof GoldenPistol
-			 || weapon instanceof Handgun
-			 || weapon instanceof Magnum
-			 || weapon instanceof TacticalHandgun
-			 || weapon instanceof AutoHandgun) { desc += "\n\n" + Messages.get(this, "desc_handgun", weapon.title()); }
-			if (weapon instanceof DualPistol
-			 || weapon instanceof SubMachinegun
-			 || weapon instanceof AssultRifle
-			 || weapon instanceof HeavyMachinegun
-			 || weapon instanceof MiniGun
-			 || weapon instanceof AutoRifle) { desc += "\n\n" + Messages.get(this, "desc_machinegun", weapon.title()); }
-			if (weapon instanceof Revolver
-			 || weapon instanceof HuntingRifle
-			 || weapon instanceof Carbine
-			 || weapon instanceof SniperRifle
-			 || weapon instanceof AntimaterRifle
-			 || weapon instanceof MarksmanRifle
-			 || weapon instanceof WA2000) { desc += "\n\n" + Messages.get(this, "desc_sniper", weapon.title()); }
+			if (weapon instanceof HG) { desc += "\n\n" + Messages.get(this, "desc_handgun", weapon.title()); }
+			if (weapon instanceof MG) { desc += "\n\n" + Messages.get(this, "desc_machinegun", weapon.title()); }
+			if (weapon instanceof SR) { desc += "\n\n" + Messages.get(this, "desc_sniper", weapon.title()); }
 		}
 
 		if (weapon != null || armor != null) {
@@ -573,11 +537,6 @@ public class DriedRose extends Artifact {
 			properties.add(Property.UNDEAD);
 		}
 
-		public boolean isGun = false;
-		public boolean isHandGun = false;
-		public boolean isMachineGun = false;
-		public boolean isSniper = false;
-
 		private DriedRose rose = null;
 		
 		public GhostHero(){
@@ -613,42 +572,6 @@ public class DriedRose extends Artifact {
 			if (rose == null) {
 				rose = Dungeon.hero.belongings.getItem(DriedRose.class);
 			}
-
-			if (rose.weapon instanceof CrudePistol
-			 || rose.weapon instanceof Pistol
-			 || rose.weapon instanceof GoldenPistol
-			 || rose.weapon instanceof Handgun
-			 || rose.weapon instanceof Magnum
-			 || rose.weapon instanceof TacticalHandgun
-			 || rose.weapon instanceof AutoHandgun) {
-				isHandGun = true;
-				isMachineGun = false;
-				isSniper = false;
-				isGun = true;
-			} else if (rose.weapon instanceof DualPistol
-			 		|| rose.weapon instanceof SubMachinegun
-			 		|| rose.weapon instanceof AssultRifle
-			 		|| rose.weapon instanceof HeavyMachinegun
-			 		|| rose.weapon instanceof MiniGun
-			 		|| rose.weapon instanceof AutoRifle) {
-				isHandGun = false;
-				isMachineGun = true;
-				isSniper = false;
-				isGun = true;
-			} else if (rose.weapon instanceof Revolver
-					|| rose.weapon instanceof HuntingRifle
-					|| rose.weapon instanceof Carbine
-					|| rose.weapon instanceof SniperRifle
-			  		|| rose.weapon instanceof AntimaterRifle
-			  		|| rose.weapon instanceof MarksmanRifle
-			  		|| rose.weapon instanceof WA2000) {
-				isHandGun = false;
-				isMachineGun = false;
-				isSniper = true;
-				isGun = true;
-			} else {
-				isGun = false;
-			}
 			
 			//same dodge as the hero
 			defenseSkill = (Dungeon.hero.lvl+4);
@@ -676,12 +599,6 @@ public class DriedRose extends Artifact {
 			
 			//same accuracy as the hero.
 			int acc = Dungeon.hero.lvl + 9;
-
-			if (isGun && !level.adjacent(enemy.pos, rose.ghost.pos)) {
-				if (isHandGun) acc *= 1;
-				if (isMachineGun) acc *= 0.7f;
-				if (isSniper) acc *= 2;
-			}
 			
 			if (rose != null && rose.weapon != null){
 				acc *= rose.weapon.accuracyFactor( this, target );
@@ -696,28 +613,13 @@ public class DriedRose extends Artifact {
 			if (rose != null && rose.weapon != null){
 				delay *= rose.weapon.delayFactor(this);
 			}
-			if (!level.adjacent(enemy.pos, rose.ghost.pos)) {
-				if (isHandGun) {
-					delay *= 8/6f;
-				}
-				if (isMachineGun) {
-					delay *= 6/12f;
-				}
-				if (isSniper) {
-					delay *= 4f;
-				}
-			}
 
 			return delay;
 		}
 		
 		@Override
 		protected boolean canAttack(Char enemy) {
-			if (isGun) {
-				return true;
-			} else {
-				return super.canAttack(enemy) || (rose != null && rose.weapon != null && rose.weapon.canReach(this, enemy.pos));
-			}
+			return super.canAttack(enemy) || (rose != null && rose.weapon != null && rose.weapon.canReach(this, enemy.pos));
 		}
 		
 		@Override
@@ -740,9 +642,6 @@ public class DriedRose extends Artifact {
 			} else {
 				dmg += Random.NormalIntRange(0, 5);
 			}
-			if (isHandGun) dmg *= 0.5f+0.1f*rose.weapon.tier;
-			if (isMachineGun) dmg *= 0.25f+0.05f*rose.weapon.tier;
-			if (isSniper) dmg *= 1f+0.2f*rose.weapon.tier;
 			return dmg;
 		}
 		

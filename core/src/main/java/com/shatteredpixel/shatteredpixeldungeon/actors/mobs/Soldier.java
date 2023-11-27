@@ -21,27 +21,13 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
-import static com.shatteredpixel.shatteredpixeldungeon.Dungeon.depth;
-
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Cripple;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Light;
 import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
-import com.shatteredpixel.shatteredpixeldungeon.items.Item;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AssultRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Handgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HeavyMachinegun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Magnum;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RocketLauncher;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ShotGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SniperRifle;
 import com.shatteredpixel.shatteredpixeldungeon.mechanics.Ballistica;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.SoldierSprite;
 import com.watabou.utils.Random;
-import com.watabou.utils.Reflection;
 
 public class Soldier extends Mob {
 	
@@ -117,17 +103,17 @@ public class Soldier extends Mob {
 		super.rollToDropLoot();
 	}
 
-	@Override
-	public Item createLoot() {
-		if (depth == 30) {
-			return null;
-		} else {
-			Dungeon.LimitedDrops.SOLDIER_WEP.count++;
-			Class<?extends MeleeWeapon> loot;
-			loot = Random.oneOf(Handgun.class, Magnum.class, AssultRifle.class, HeavyMachinegun.class, SniperRifle.class, RocketLauncher.class, ShotGun.class);
-
-			return Reflection.newInstance(loot);
-		}
-	}
+//	@Override
+//	public Item createLoot() {
+//		if (depth == 30) {
+//			return null;
+//		} else {
+//			Dungeon.LimitedDrops.SOLDIER_WEP.count++;
+//			Class<?extends MeleeWeapon> loot;
+//			loot = Random.oneOf();
+//
+//			return Reflection.newInstance(loot);
+//		}
+//	}
 	
 }

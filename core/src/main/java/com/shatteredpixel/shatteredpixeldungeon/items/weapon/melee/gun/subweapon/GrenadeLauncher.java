@@ -19,42 +19,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
+package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.gun.subweapon;
 
 import static com.shatteredpixel.shatteredpixeldungeon.Dungeon.hero;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
-import com.shatteredpixel.shatteredpixeldungeon.Challenges;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Barrier;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Bless;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Cloaking;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.ElectroBullet;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.FireBullet;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.FrostBullet;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.GrenadeCoolDown;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.InfiniteBullet;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.MagicImmune;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Momentum;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
-import com.shatteredpixel.shatteredpixeldungeon.actors.hero.HeroSubClass;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Talent;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.gunner.Riot;
-import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
 import com.shatteredpixel.shatteredpixeldungeon.effects.CellEmitter;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.BlastParticle;
 import com.shatteredpixel.shatteredpixeldungeon.effects.particles.SmokeParticle;
-import com.shatteredpixel.shatteredpixeldungeon.items.AmmoBelt;
-import com.shatteredpixel.shatteredpixeldungeon.items.rings.RingOfReload;
 import com.shatteredpixel.shatteredpixeldungeon.items.rings.RingOfSharpshooting;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.CorrosionBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.GoldenBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.NaturesBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.SpiritBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.WindBow;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.gun.Gun;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.CellSelector;
@@ -68,7 +60,7 @@ import com.watabou.utils.Random;
 
 import java.util.ArrayList;
 
-public class RocketLauncher extends MeleeWeapon {
+public class GrenadeLauncher extends MeleeWeapon {
 
     public static final String AC_SHOOT		= "SHOOT";
     public static final String AC_RELOAD = "RELOAD";
@@ -76,29 +68,19 @@ public class RocketLauncher extends MeleeWeapon {
     public int max_round;
     public int round = 0;
     public float reload_time;
-    public boolean silencer = false;
-    public boolean short_barrel = false;
-    public boolean long_barrel = false;
-    public boolean magazine = false;
-    public boolean light = false;
-    public boolean heavy = false;
-    public boolean flash = false;
     private static final String TXT_STATUS = "%d/%d";
 
     {
-
         defaultAction = AC_SHOOT;
         usesTargeting = true;
 
-        image = ItemSpriteSheet.ROCKET_LAUNCHER;
+        image = ItemSpriteSheet.GRENADE_LAUNCHER;
         hitSound = Assets.Sounds.HIT_CRUSH;
         hitSoundPitch = 0.8f;
 
-        tier = 5;
-
-        gun = true;
-        rocketGun = true;
-        canAdvance = true;
+        tier = 3;
+        bones = false;
+        unique = true;
     }
 
     private static final String ROUND = "round";
@@ -121,30 +103,15 @@ public class RocketLauncher extends MeleeWeapon {
         reload_time = bundle.getFloat(RELOAD_TIME);
     }
 
-
-
-
     @Override
     public ArrayList<String> actions(Hero hero) {
         ArrayList<String> actions = super.actions(hero);
-        if (isEquipped( hero )) {
-            actions.add(AC_SHOOT);
-            actions.add(AC_RELOAD);
-        }
+        actions.add(AC_SHOOT);
+        actions.add(AC_RELOAD);
+        actions.remove(AC_EQUIP);
+        actions.remove(AC_ABILITY);
         return actions;
     }
-
-    @Override
-    protected int baseChargeUse(Hero hero, Char target){
-        return 0;
-    }
-
-    @Override
-    protected void duelistAbility(Hero hero, Integer target) {
-
-    }
-
-
 
     @Override
     public void execute(Hero hero, String action) {
@@ -152,130 +119,43 @@ public class RocketLauncher extends MeleeWeapon {
         super.execute(hero, action);
 
         if (action.equals(AC_SHOOT)) {
-
-            if (!isEquipped( hero )) {
-                usesTargeting = false;
-                GLog.w(Messages.get(this, "not_equipped"));
-            } else {
-                if (round <= 0) {
-                    reload_time = 3f* RingOfReload.reloadMultiplier(Dungeon.hero);
-                    reload();
+            if (round <= 0) {
+                reload_time = 1f;
+                if (hero.buff(GrenadeCoolDown.class) != null) {
+                    usesTargeting = false;
+                    GLog.w(Messages.get(GrenadeLauncher.class, "cannot_reload"));
                 } else {
-                    reload_time = 3f* RingOfReload.reloadMultiplier(Dungeon.hero);
-                    usesTargeting = true;
-                    curUser = hero;
-                    curItem = this;
-                    GameScene.selectCell(shooter);
+                    reload();
                 }
+            } else {
+                reload_time = 1f;
+                usesTargeting = true;
+                curUser = hero;
+                curItem = this;
+                GameScene.selectCell(shooter);
             }
         }
         if (action.equals(AC_RELOAD)) {
-            max_round = 4;
-            if (Dungeon.hero.hasTalent(Talent.LARGER_MAGAZINE)) {
-            max_round += 1f * Dungeon.hero.pointsInTalent(Talent.LARGER_MAGAZINE);
-        }
-            if (round == max_round){
-                GLog.w(Messages.get(this, "already_loaded"));
+            if (hero.buff(GrenadeCoolDown.class) != null) {
+                GLog.w(Messages.get(GrenadeLauncher.class, "cannot_reload"));
             } else {
-                fullReload();
+                max_round = 1;
+                if (round == max_round){
+                    GLog.w(Messages.get(this, "already_loaded"));
+                } else {
+                    reload();
+                }
             }
         }
-    }
-
-    public void fullReload() {
-        max_round = 4;
-        if (Dungeon.hero.hasTalent(Talent.LARGER_MAGAZINE)) {
-            max_round += 1f * Dungeon.hero.pointsInTalent(Talent.LARGER_MAGAZINE);
-        }
-
-        Buff.detach(hero, FrostBullet.class);
-        Buff.detach(hero, FireBullet.class);
-        Buff.detach(hero, ElectroBullet.class);
-
-        if (hero.hasTalent(Talent.ELEMENTAL_BULLET) && round == 0) {
-            int chance = Random.Int(6);
-            int point = Dungeon.hero.pointsInTalent(Talent.ELEMENTAL_BULLET);
-            switch (chance) {
-                default:
-                    break;
-                case 0:
-                    if (point >= 1) {
-                        Buff.affect(hero, FrostBullet.class, 100f);
-                    }
-                    break;
-                case 1:
-                    if (point >= 2) {
-                        Buff.affect(hero, FireBullet.class, 100f);
-                    }
-                    break;
-                case 2:
-                    if (point >= 3) {
-                        Buff.affect(hero, ElectroBullet.class, 100f);
-                    }
-                    break;
-            }
-        }
-
-        curUser.spend(reload_time*(max_round-round));
-        curUser.busy();
-        Sample.INSTANCE.play(Assets.Sounds.UNLOCK, 2, 1.1f);
-        curUser.sprite.operate(curUser.pos);
-        round = Math.max(max_round, round);
-
-        GLog.i(Messages.get(this, "reloading"));
-
-        if (Dungeon.hero.hasTalent(Talent.SAFE_RELOAD) && Dungeon.hero.buff(Talent.ReloadCooldown.class) == null) {
-            Buff.affect(hero, Barrier.class).setShield(1+2*hero.pointsInTalent(Talent.SAFE_RELOAD));
-            Buff.affect(hero, Talent.ReloadCooldown.class, 5f);
-        }
-
-        updateQuickslot();
     }
 
     public void reload() {
-        max_round = 4;
-        if (Dungeon.hero.hasTalent(Talent.LARGER_MAGAZINE)) {
-            max_round += 1f * Dungeon.hero.pointsInTalent(Talent.LARGER_MAGAZINE);
-        }
-
-        Buff.detach(hero, FrostBullet.class);
-        Buff.detach(hero, FireBullet.class);
-        Buff.detach(hero, ElectroBullet.class);
-
-        if (hero.hasTalent(Talent.ELEMENTAL_BULLET) && round == 0) {
-            int chance = Random.Int(6);
-            int point = Dungeon.hero.pointsInTalent(Talent.ELEMENTAL_BULLET);
-            switch (chance) {
-                default:
-                    break;
-                case 0:
-                    if (point >= 1) {
-                        Buff.affect(hero, FrostBullet.class, 100f);
-                    }
-                    break;
-                case 1:
-                    if (point >= 2) {
-                        Buff.affect(hero, FireBullet.class, 100f);
-                    }
-                    break;
-                case 2:
-                    if (point >= 3) {
-                        Buff.affect(hero, ElectroBullet.class, 100f);
-                    }
-                    break;
-            }
-        }
-
+        max_round = 1;
         curUser.spend(reload_time);
         curUser.busy();
         Sample.INSTANCE.play(Assets.Sounds.UNLOCK, 2, 1.1f);
         curUser.sprite.operate(curUser.pos);
-        if (round < 4 + 1f * Dungeon.hero.pointsInTalent(Talent.LARGER_MAGAZINE)) {
-            round ++;
-        } else {
-            round = Math.max(max_round, round);
-        }
-
+        round = Math.max(max_round, round);
         GLog.i(Messages.get(this, "reloading"));
 
         if (Dungeon.hero.hasTalent(Talent.SAFE_RELOAD) && Dungeon.hero.buff(Talent.ReloadCooldown.class) == null) {
@@ -289,29 +169,15 @@ public class RocketLauncher extends MeleeWeapon {
 
     public int getRound() { return this.round; }
 
-    public void oneReload() {
-        max_round = 4;
-        if (Dungeon.hero.hasTalent(Talent.LARGER_MAGAZINE)) {
-            max_round += 1f * Dungeon.hero.pointsInTalent(Talent.LARGER_MAGAZINE);
-        }
-        round ++;
-        if (round > max_round) {
-            round = max_round;
-        }
-    }
-
     @Override
     public String status() {
-        max_round = 4;
-        if (Dungeon.hero.hasTalent(Talent.LARGER_MAGAZINE)) {
-            max_round += 1f * Dungeon.hero.pointsInTalent(Talent.LARGER_MAGAZINE);
-        }
+        max_round = 1;
         return Messages.format(TXT_STATUS, round, max_round);
     }
 
     @Override
     public int STRReq(int lvl) {
-        return STRReq(tier, lvl);
+        return 0;
     }
 
     public int min(int lvl) {
@@ -320,20 +186,22 @@ public class RocketLauncher extends MeleeWeapon {
     }
 
     public int max(int lvl) {
-        return 3 * (tier + 1) +
-                lvl;
+        return 2 * (tier-1) +
+                lvl * (tier-1);
     }
 
     public int Bulletmin(int lvl) {
-        return (tier+5) +
-                lvl      +
-                RingOfSharpshooting.levelDamageBonus(hero);
+        int dmg = (int)(Dungeon.hero.lvl/2.5f)
+                + 2 * RingOfSharpshooting.levelDamageBonus(Dungeon.hero)
+                + (curseInfusionBonus ? 2 : 0);
+        return Math.max(0, dmg);
     }
 
     public int Bulletmax(int lvl) {
-        return 2 * (tier+5)   +
-                lvl * (tier+5) +
-                RingOfSharpshooting.levelDamageBonus(hero);
+        int dmg = 12 + (int)(Dungeon.hero.lvl*2/2.5f)
+                + 4 * RingOfSharpshooting.levelDamageBonus(Dungeon.hero)
+                + (curseInfusionBonus ? 4 : 0);
+        return Math.max(0, dmg);
     }
 
     @Override
@@ -374,34 +242,47 @@ public class RocketLauncher extends MeleeWeapon {
             }
         }
         return delay;
+    }                   //공격 속도
+
+    @Override
+    public int level() {
+        return (Dungeon.hero == null ? 0 : Dungeon.hero.lvl/5) + (curseInfusionBonus ? 1 : 0);
     }
 
-    public RocketLauncher.Rocket knockBullet(){
-        return new RocketLauncher.Rocket();
+    @Override
+    public int buffedLvl() {
+        //level isn't affected by buffs/debuffs
+        return level();
+    }
+
+    @Override
+    public boolean isUpgradable() {
+        return false;
+    }
+
+    public GrenadeLauncher.Rocket knockBullet(){
+        return new GrenadeLauncher.Rocket();
     }
     public class Rocket extends MissileWeapon {
 
         {
-            image = ItemSpriteSheet.ROCKET;
+            image = ItemSpriteSheet.GRENADE;
 
             hitSound = Assets.Sounds.PUFF;
-            tier = 5;
-
-            bullet = true;
-            rocketGunBullet = true;
+            tier = 3;
         }
 
         @Override
         public int buffedLvl(){
-            return RocketLauncher.this.buffedLvl();
+            return GrenadeLauncher.this.buffedLvl();
         }
 
         @Override
         public int damageRoll(Char owner) {
             Hero hero = (Hero)owner;
             Char enemy = hero.enemy();
-            int bulletdamage = Random.NormalIntRange(Bulletmin(RocketLauncher.this.buffedLvl()),
-                    Bulletmax(RocketLauncher.this.buffedLvl()));
+            int bulletdamage = Random.NormalIntRange(Bulletmin(GrenadeLauncher.this.buffedLvl()),
+                    Bulletmax(GrenadeLauncher.this.buffedLvl()));
 
             if (owner.buff(Momentum.class) != null && owner.buff(Momentum.class).freerunning()) {
                 bulletdamage = Math.round(bulletdamage * (1f + 0.15f * ((Hero) owner).pointsInTalent(Talent.PROJECTILE_MOMENTUM)));
@@ -415,94 +296,86 @@ public class RocketLauncher extends MeleeWeapon {
 
         @Override
         public boolean hasEnchant(Class<? extends Enchantment> type, Char owner) {
-            return RocketLauncher.this.hasEnchant(type, owner);
+            return GrenadeLauncher.this.hasEnchant(type, owner);
         }
 
         @Override
         public int proc(Char attacker, Char defender, int damage) {
-            if (silencer) {
-                damage *= 0.75f;
-            }
-            if (damage >= defender.HP && hero.buff(MeleeWeapon.PrecisionShooting.class) != null && hero.buff(Charger.class).charges >= 1) {
-                RocketLauncher.this.onAbilityKill(hero, defender);
-            }
             SpiritBow bow = hero.belongings.getItem(SpiritBow.class);
             WindBow bow2 = hero.belongings.getItem(WindBow.class);
             GoldenBow bow3 = hero.belongings.getItem(GoldenBow.class);
             NaturesBow bow4 = hero.belongings.getItem(NaturesBow.class);
             CorrosionBow bow5 = hero.belongings.getItem(CorrosionBow.class);
-            if (RocketLauncher.this.enchantment == null
+            if (GrenadeLauncher.this.enchantment == null
                     && Random.Int(3) < hero.pointsInTalent(Talent.SHARED_ENCHANTMENT)
                     && hero.buff(MagicImmune.class) == null
                     && bow != null
                     && bow.enchantment != null) {
                 return bow.enchantment.proc(this, attacker, defender, damage);
-            } else if (RocketLauncher.this.enchantment == null
+            } else if (GrenadeLauncher.this.enchantment == null
                     && Random.Int(3) < hero.pointsInTalent(Talent.SHARED_ENCHANTMENT)
                     && hero.buff(MagicImmune.class) == null
                     && bow2 != null
                     && bow2.enchantment != null) {
                 return bow2.enchantment.proc(this, attacker, defender, damage);
-            } else if (RocketLauncher.this.enchantment == null
+            } else if (GrenadeLauncher.this.enchantment == null
                     && Random.Int(3) < hero.pointsInTalent(Talent.SHARED_ENCHANTMENT)
                     && hero.buff(MagicImmune.class) == null
                     && bow3 != null
                     && bow3.enchantment != null) {
                 return bow3.enchantment.proc(this, attacker, defender, damage);
-            } else if (RocketLauncher.this.enchantment == null
+            } else if (GrenadeLauncher.this.enchantment == null
                     && Random.Int(3) < hero.pointsInTalent(Talent.SHARED_ENCHANTMENT)
                     && hero.buff(MagicImmune.class) == null
                     && bow4 != null
                     && bow4.enchantment != null) {
                 return bow4.enchantment.proc(this, attacker, defender, damage);
-            } else if (RocketLauncher.this.enchantment == null
+            } else if (GrenadeLauncher.this.enchantment == null
                     && Random.Int(3) < hero.pointsInTalent(Talent.SHARED_ENCHANTMENT)
                     && hero.buff(MagicImmune.class) == null
                     && bow5 != null
                     && bow5.enchantment != null) {
                 return bow5.enchantment.proc(this, attacker, defender, damage);
             } else {
-                return RocketLauncher.this.proc(attacker, defender, damage);
+                return GrenadeLauncher.this.proc(attacker, defender, damage);
             }
         }
 
         @Override
         public float delayFactor(Char user) {
-            if (hero.subClass == HeroSubClass.GUNSLINGER && hero.justMoved) {
-                return 0;
+            if (hero.buff(Riot.riotTracker.class) != null) {
+                return GrenadeLauncher.this.delayFactor(user)/2f;
             } else {
-                if (hero.buff(Riot.riotTracker.class) != null) {
-                    return RocketLauncher.this.delayFactor(user)/2f;
-                } else {
-                    return RocketLauncher.this.delayFactor(user);
-                }
+                return GrenadeLauncher.this.delayFactor(user);
             }
         }
 
         @Override
         public int STRReq(int lvl) {
-            return RocketLauncher.this.STRReq();
+            return GrenadeLauncher.this.STRReq();
         }
 
         @Override
         protected void onThrow(int cell) {
+            Buff.prolong(hero, GrenadeCoolDown.class, 50f);
             Char enemy = Actor.findChar( cell );
             ArrayList<Char> targets = new ArrayList<>();
             if (Actor.findChar(cell) != null) targets.add(Actor.findChar(cell));
-            for (int i : PathFinder.NEIGHBOURS8){
+            for (int i : PathFinder.NEIGHBOURS24){
                 if (Actor.findChar(cell + i) != null) targets.add(Actor.findChar(cell + i));
             }
             for (Char target : targets){
                 curUser.shoot(target, this);
                 if (target == hero && !target.isAlive()){
                     Dungeon.fail(getClass());
-                    GLog.n(Messages.get(RocketLauncher.class, "ondeath"));
+                    GLog.n(Messages.get(GrenadeLauncher.class, "ondeath"));
                 }
             }
             CellEmitter.get(cell).burst(SmokeParticle.FACTORY, 2);
             CellEmitter.center(cell).burst(BlastParticle.FACTORY, 2);
+            boolean terrainAffected = false;
             ArrayList<Char> affected = new ArrayList<>();
-            for (int n : PathFinder.NEIGHBOURS9) {
+            for (int n : PathFinder.NEIGHBOURS25) {
                 int c = cell + n;
                 if (c >= 0 && c < Dungeon.level.length()) {
                     if (Dungeon.level.heroFOV[c]) {
@@ -512,6 +385,7 @@ public class RocketLauncher extends MeleeWeapon {
                     if (Dungeon.level.flamable[c]) {
                         Dungeon.level.destroy(c);
                         GameScene.updateMap(c);
+                        terrainAffected = true;
                     }
                     Char ch = Actor.findChar(c);
                     if (ch != null) {
@@ -527,36 +401,12 @@ public class RocketLauncher extends MeleeWeapon {
             } else {
                 round --;
             }
-            if (hero.pointsInTalent(Talent.SILENCER) > 1){
-                if (hero.pointsInTalent(Talent.SILENCER) > 2) {
-                    //no aggro
-                } else {
-                    if (hero.buff(Cloaking.class) != null) {
-                        //no aggro
-                    }
-                }
-            } else {
-                for (Mob mob : Dungeon.level.mobs.toArray( new Mob[0] )) {
-                    int dist = 4;
-                    if (hero.hasTalent(Talent.SILENCER) && hero.buff(Cloaking.class) != null) {
-                        dist *= 0.5;
-                    }
-                    if (mob.paralysed <= 0
-                            && Dungeon.level.distance(curUser.pos, mob.pos) <= dist
-                            && mob.state != mob.HUNTING
-                            && !silencer) {
-                        mob.beckon( curUser.pos ); }
-                }
-            }
             updateQuickslot();
-            if (Dungeon.isChallenged(Challenges.DURABILITY)) {
-                RocketLauncher.this.use();
-            }
         }
 
         @Override
         public void throwSound() {
-            Sample.INSTANCE.play( Assets.Sounds.HIT_CRUSH, 1, Random.Float(0.33f, 0.66f) );
+            Sample.INSTANCE.play( Assets.Sounds.HIT_CRUSH, 1, Random.Float(0.17f, 0.33f) );
         }
 
         @Override
@@ -568,28 +418,15 @@ public class RocketLauncher extends MeleeWeapon {
     private CellSelector.Listener shooter = new CellSelector.Listener() {
         @Override
         public void onSelect( Integer target ) {
-            AmmoBelt.OverHeat overHeat = hero.buff(AmmoBelt.OverHeat.class);
             if (target != null) {
-                if (overHeat != null && Random.Float() < AmmoBelt.OverHeat.chance) {
-                    usesTargeting = false;
-                    GLog.w(Messages.get(Gun.class, "failed"));
-                    curUser.spendAndNext(Actor.TICK);
-                } else {
-                    if (target != null) {
-                        if (target == curUser.pos) {
-                            reload();
-                        } else {
-                            knockBullet().cast(curUser, target);
-                            if (hero.buff(MeleeWeapon.PrecisionShooting.class) != null &&
-                                    hero.buff(MeleeWeapon.Charger.class) != null &&
-                                    hero.buff(MeleeWeapon.PrecisionShooting.class).onUse &&
-                                    hero.buff(MeleeWeapon.Charger.class).charges >= 1) {
-                                beforeAbilityUsed(curUser, Actor.findChar(target));
-                                hero.buff(MeleeWeapon.Charger.class).charges--;
-                                afterAbilityUsed(curUser);
-                            }
-                        }
+                if (target == curUser.pos) {
+                    if (hero.buff(GrenadeCoolDown.class) != null) {
+                        GLog.w(Messages.get(GrenadeLauncher.class, "cannot_reload"));
+                    } else {
+                        reload();
                     }
+                } else {
+                    knockBullet().cast(curUser, target);
                 }
             }
         }
@@ -598,5 +435,4 @@ public class RocketLauncher extends MeleeWeapon {
             return Messages.get(SpiritBow.class, "prompt");
         }
     };
-
 }

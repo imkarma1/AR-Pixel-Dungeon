@@ -96,8 +96,6 @@ import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfTeleportat
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfMagicMissile;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.SpiritBow;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AntimaterRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.CrudePistol;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Dagger;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Gloves;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HealBook;
@@ -165,69 +163,15 @@ public enum HeroClass {
 		 */
 		if (SPDSettings.customSeed().equals("test")) {
 			new TengusMask().identify().collect();
-			new CrudePistol().identify().collect();
-			new CrudePistol().identify().collect();
 			new PotionOfExperience().identify().quantity(29).collect();
 			new Teleporter().identify().collect();
 			new PlateArmor().identify().upgrade(100).collect();
 			new TestWeapon().identify().collect();
 			new SpellBook_Empty().identify().collect();
 			new ScrollOfUpgrade().identify().quantity(200).collect();
-			new AntimaterRifle().upgrade(10).identify().collect();
 			new PotionOfHealing().identify().quantity(100).collect();
 			new ScrollOfMagicMapping().identify().quantity(200).collect();
 		}
-//		new TengusMask().identify().collect();
-//		new PotionOfExperience().identify().quantity(29).collect();
-//		new Teleporter().identify().collect();
-//		new PlateArmor().identify().upgrade(100).collect();
-//		new TestWeapon().identify().collect();
-//		new PotionOfDivineInspiration().identify().quantity(4).collect();
-//		new PotionOfHealing().identify().quantity(100).collect();
-//		new RingOfMight().identify().upgrade(10).collect();
-//		new KingsCrown().collect();
-//		new ScrollOfUpgrade().identify().quantity(200).collect();
-
-//		new AdvancedEvolution().quantity(20).collect();
-//		new HeavyBoomerang().upgrade(10).collect();
-
-//		new SpellBook_Disintegration().identify().collect();
-//		new ScrollOfTeleportation().identify().quantity(200).collect();
-//		new WandOfDisintegration().identify().collect();
-//
-//		new SpellBook_Empty().identify().collect();
-//		new SpellBook_Empty().identify().collect();
-//		new SpellBook_Empty().identify().collect();
-//		new SpellBook_Transfusion().identify().collect();
-//		new WandOfTransfusion().identify().upgrade(10).collect();
-//		new ScrollOfChallenge().identify().collect();
-//		new ScrollOfTransmutation().identify().quantity(200).collect();
-
-		//new AntimaterRifle().identify().collect();
-		//new ScrollOfMetamorphosis().identify().quantity(20).collect();
-		//new Katana().identify().collect();
-		//new Crossbow().identify().collect();
-		//new ThrowingKnife().quantity(200).collect();
-		//new FishingSpear().collect();
-		//new ThrowingSpear().collect();
-		//new Javelin().collect();
-		//new Trident().quantity(100).collect();
-		//new Bolas().collect();
-		//new StoneOfAugmentation().quantity(100).collect();
-		//new AlchemistsToolkit().identify().upgrade(10).collect();
-		//new FishingSpear().upgrade(1).quantity(200).collect();
-		//new ScrollOfEnchantment().identify().quantity(200).collect();
-		//new RingOfArcana().identify().upgrade(5).collect();
-		//new PotionOfMindVision().identify().quantity(200).collect();
-		//new ScrollOfMagicMapping().identify().quantity(200).collect();
-		//new ScrollOfExtract().quantity(20).collect();
-		//new ScrollOfUpgrade().identify().quantity(1000).collect();
-		//new ScrollOfMetamorphosis().identify().quantity(1000).collect();
-		//new ScrollOfIdentify().identify().quantity(1000).collect();
-		//new SpellBook_Corruption().identify().collect();
-		//new SpellBook_Corruption_Sword().identify().collect();
-
-		//new PotionOfStrength().identify().quantity(1000).collect();
 
 		//for testing
 
@@ -429,8 +373,8 @@ public enum HeroClass {
 	}
 
 	private static void initGunner( Hero hero ) {
-		CrudePistol crude = new CrudePistol();
-		(hero.belongings.weapon = crude).identify();
+//		CrudePistol crude = new CrudePistol();
+//		(hero.belongings.weapon = crude).identify();
 		//RingOfReload reload = new RingOfReload();
 		//reload.start = true;
 		//(hero.belongings.ring = reload).identify().upgrade(3);
@@ -444,7 +388,7 @@ public enum HeroClass {
 			hero.belongings.misc.activate( hero );
 		}
 
-		Dungeon.quickslot.setSlot(0, crude);
+//		Dungeon.quickslot.setSlot(0, crude);
 		Dungeon.quickslot.setSlot(1, ammoBelt);
 
 		new PotionOfHaste().identify();

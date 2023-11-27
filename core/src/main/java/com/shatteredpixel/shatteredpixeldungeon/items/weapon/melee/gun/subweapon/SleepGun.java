@@ -19,43 +19,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee;
+package com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.gun.subweapon;
 
 import static com.shatteredpixel.shatteredpixeldungeon.Dungeon.hero;
 
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
-import com.shatteredpixel.shatteredpixeldungeon.Challenges;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
-import com.shatteredpixel.shatteredpixeldungeon.actors.blobs.Blob;
-import com.shatteredpixel.shatteredpixeldungeon.actors.blobs.Fire;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Barrier;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Bless;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.InfiniteBullet;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Invisibility;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.FlavourBuff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.GrenadeCoolDown;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.MagicImmune;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.MagicalSleep;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Momentum;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.SleepDartCoolDown;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
-import com.shatteredpixel.shatteredpixeldungeon.actors.hero.HeroSubClass;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Talent;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.gunner.Riot;
-import com.shatteredpixel.shatteredpixeldungeon.effects.MagicMissile;
-import com.shatteredpixel.shatteredpixeldungeon.items.AmmoBelt;
-import com.shatteredpixel.shatteredpixeldungeon.items.rings.RingOfReload;
-import com.shatteredpixel.shatteredpixeldungeon.items.rings.RingOfSharpshooting;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.DM300;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.DwarfKing;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Goo;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Rebel;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Tengu;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.YogDzewa;
+import com.shatteredpixel.shatteredpixeldungeon.effects.CellEmitter;
+import com.shatteredpixel.shatteredpixeldungeon.effects.particles.BlastParticle;
+import com.shatteredpixel.shatteredpixeldungeon.effects.particles.SmokeParticle;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.CorrosionBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.GoldenBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.NaturesBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.SpiritBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.WindBow;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.gun.Gun;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.MissileWeapon;
-import com.shatteredpixel.shatteredpixeldungeon.levels.Level;
-import com.shatteredpixel.shatteredpixeldungeon.levels.Terrain;
-import com.shatteredpixel.shatteredpixeldungeon.mechanics.Ballistica;
-import com.shatteredpixel.shatteredpixeldungeon.mechanics.ConeAOE;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.CellSelector;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
@@ -63,41 +62,32 @@ import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
-import com.watabou.utils.Callback;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
 
-public class FlameThrower extends MeleeWeapon {
+public class SleepGun extends MeleeWeapon {
 
     public static final String AC_SHOOT		= "SHOOT";
     public static final String AC_RELOAD = "RELOAD";
 
     public int max_round;
-    public int initial_max_round;
     public int round = 0;
     public float reload_time;
     private static final String TXT_STATUS = "%d/%d";
 
-    int maxDistance;
-    int degree;
-
     {
-        initial_max_round = 4;
+
         defaultAction = AC_SHOOT;
         usesTargeting = true;
 
-        image = ItemSpriteSheet.FLAMETHORWER;
+        image = ItemSpriteSheet.SLEEP_GUN;
         hitSound = Assets.Sounds.HIT_CRUSH;
         hitSoundPitch = 0.8f;
 
-        maxDistance = 5;
-        degree = 30;
-
-        tier = 5;
-
-        gun = true;
-        heavyGun = true;
+        tier = 3;
+        bones = false;
+        unique = true;
     }
 
     private static final String ROUND = "round";
@@ -123,21 +113,11 @@ public class FlameThrower extends MeleeWeapon {
     @Override
     public ArrayList<String> actions(Hero hero) {
         ArrayList<String> actions = super.actions(hero);
-        if (isEquipped( hero )) {
-            actions.add(AC_SHOOT);
-            actions.add(AC_RELOAD);
-        }
+        actions.add(AC_SHOOT);
+        actions.add(AC_RELOAD);
+        actions.remove(AC_EQUIP);
+        actions.remove(AC_ABILITY);
         return actions;
-    }
-
-    @Override
-    protected int baseChargeUse(Hero hero, Char target){
-        return 0;
-    }
-
-    @Override
-    protected void duelistAbility(Hero hero, Integer target) {
-
     }
 
     @Override
@@ -146,54 +126,43 @@ public class FlameThrower extends MeleeWeapon {
         super.execute(hero, action);
 
         if (action.equals(AC_SHOOT)) {
-
-            if (!isEquipped( hero )) {
-                usesTargeting = false;
-                GLog.w(Messages.get(this, "not_equipped"));
-            } else {
-                if (round <= 0) {
-                    reload_time = 3f* RingOfReload.reloadMultiplier(Dungeon.hero);
-                    reload();
+            if (round <= 0) {
+                reload_time = 1f;
+                if (hero.buff(SleepDartCoolDown.class) != null) {
+                    usesTargeting = false;
+                    GLog.w(Messages.get(SleepGun.class, "cannot_reload"));
                 } else {
-                    int STRReq = this.STRReq(this.buffedLvl());
-                    if (this.masteryPotionBonus) STRReq -= 2;
-                    if (hero.STR() < STRReq) {
-                        usesTargeting = false;
-                        GLog.w(Messages.get(this, "heavy_to_shoot"));
-                    } else {
-                        reload_time = 3f* RingOfReload.reloadMultiplier(Dungeon.hero);
-                        usesTargeting = true;
-                        curUser = hero;
-                        curItem = this;
-                        GameScene.selectCell(shooter);
-                    }
+                    reload();
                 }
+            } else {
+                reload_time = 1f;
+                usesTargeting = true;
+                curUser = hero;
+                curItem = this;
+                GameScene.selectCell(shooter);
             }
         }
         if (action.equals(AC_RELOAD)) {
-            max_round = initial_max_round;
-            if (Dungeon.hero.hasTalent(Talent.LARGER_MAGAZINE)) {
-            max_round += 1f * Dungeon.hero.pointsInTalent(Talent.LARGER_MAGAZINE);
-        }
-            if (round == max_round){
-                GLog.w(Messages.get(this, "already_loaded"));
+            if (hero.buff(SleepDartCoolDown.class) != null) {
+                GLog.w(Messages.get(SleepGun.class, "cannot_reload"));
             } else {
-                reload();
+                max_round = 1;
+                if (round == max_round){
+                    GLog.w(Messages.get(this, "already_loaded"));
+                } else {
+                    reload();
+                }
             }
         }
     }
 
     public void reload() {
-        max_round = initial_max_round;
-        if (Dungeon.hero.hasTalent(Talent.LARGER_MAGAZINE)) {
-            max_round += 1f * Dungeon.hero.pointsInTalent(Talent.LARGER_MAGAZINE);
-        }
+        max_round = 1;
         curUser.spend(reload_time);
         curUser.busy();
         Sample.INSTANCE.play(Assets.Sounds.UNLOCK, 2, 1.1f);
         curUser.sprite.operate(curUser.pos);
         round = Math.max(max_round, round);
-
         GLog.i(Messages.get(this, "reloading"));
 
         if (Dungeon.hero.hasTalent(Talent.SAFE_RELOAD) && Dungeon.hero.buff(Talent.ReloadCooldown.class) == null) {
@@ -207,46 +176,31 @@ public class FlameThrower extends MeleeWeapon {
 
     public int getRound() { return this.round; }
 
-    public void oneReload() {
-        max_round = initial_max_round;
-        if (Dungeon.hero.hasTalent(Talent.LARGER_MAGAZINE)) {
-            max_round += 1f * Dungeon.hero.pointsInTalent(Talent.LARGER_MAGAZINE);
-        }
-        round ++;
-        if (round > max_round) {
-            round = max_round;
-        }
-    }
-
     @Override
     public String status() {
-        max_round = initial_max_round;
-        if (Dungeon.hero.hasTalent(Talent.LARGER_MAGAZINE)) {
-            max_round += 1f * Dungeon.hero.pointsInTalent(Talent.LARGER_MAGAZINE);
-        }
+        max_round = 1;
         return Messages.format(TXT_STATUS, round, max_round);
     }
 
+    @Override
+    public int STRReq(int lvl) {
+        return STRReq(tier, lvl);
+    }
+
     public int min(int lvl) {
-        return tier +
-                lvl;
+        return 1;
     }
 
     public int max(int lvl) {
-        return 3 * (tier + 1) +
-                lvl;
+        return 1;
     }
 
     public int Bulletmin(int lvl) {
-        return tier +
-                lvl +
-                RingOfSharpshooting.levelDamageBonus(Dungeon.hero);
+        return 0;
     }
 
     public int Bulletmax(int lvl) {
-        return 5 * (tier + 1) +
-                lvl * 3 +
-                RingOfSharpshooting.levelDamageBonus(Dungeon.hero);
+        return 5;
     }
 
     @Override
@@ -286,35 +240,49 @@ public class FlameThrower extends MeleeWeapon {
                 delay *= Math.pow( 1.2, encumbrance );
             }
         }
-        if (hero.buff(Riot.riotTracker.class) != null) {
-            delay *= 0.5f;
-        }
         return delay;
+    }                   //공격 속도
+
+    @Override
+    public int level() {
+        return (Dungeon.hero == null ? 0 : Dungeon.hero.lvl/5) + (curseInfusionBonus ? 1 : 0);
     }
 
-    public FlameThrower.Bullet knockBullet(){
-        return new FlameThrower.Bullet();
+    @Override
+    public int buffedLvl() {
+        //level isn't affected by buffs/debuffs
+        return level();
     }
-    public class Bullet extends MissileWeapon {
+
+    @Override
+    public boolean isUpgradable() {
+        return false;
+    }
+
+    public SleepGun.Dart knockBullet(){
+        return new SleepGun.Dart();
+    }
+    public class Dart extends MissileWeapon {
 
         {
-            image = ItemSpriteSheet.NOTHING; //Also See MissileSprite.setup
+            image = ItemSpriteSheet.CLEANSING_DART;
 
-            hitSound = Assets.Sounds.PUFF;
-            tier = 5;
+            hitSound = Assets.Sounds.HIT_ARROW;
+            tier = 3;
+            ACC = 10000;
         }
 
         @Override
         public int buffedLvl(){
-            return FlameThrower.this.buffedLvl();
+            return SleepGun.this.buffedLvl();
         }
 
         @Override
         public int damageRoll(Char owner) {
             Hero hero = (Hero)owner;
             Char enemy = hero.enemy();
-            int bulletdamage = Random.NormalIntRange(Bulletmin(FlameThrower.this.buffedLvl()),
-                    Bulletmax(FlameThrower.this.buffedLvl()));
+            int bulletdamage = Random.NormalIntRange(Bulletmin(SleepGun.this.buffedLvl()),
+                    Bulletmax(SleepGun.this.buffedLvl()));
 
             if (owner.buff(Momentum.class) != null && owner.buff(Momentum.class).freerunning()) {
                 bulletdamage = Math.round(bulletdamage * (1f + 0.15f * ((Hero) owner).pointsInTalent(Talent.PROJECTILE_MOMENTUM)));
@@ -323,17 +291,12 @@ public class FlameThrower extends MeleeWeapon {
             if (owner.buff(Bless.class) != null && ((Hero) owner).hasTalent(Talent.BLESSED_TALENT)) {
                 bulletdamage = Math.round(bulletdamage * (1f + 0.15f * ((Hero) owner).pointsInTalent(Talent.BLESSED_TALENT)));
             }
-
-            if (hero.buff(Riot.riotTracker.class) != null) {
-                bulletdamage *= 0.5f;
-            }
-
             return bulletdamage;
         }
 
         @Override
         public boolean hasEnchant(Class<? extends Enchantment> type, Char owner) {
-            return FlameThrower.this.hasEnchant(type, owner);
+            return SleepGun.this.hasEnchant(type, owner);
         }
 
         @Override
@@ -343,129 +306,99 @@ public class FlameThrower extends MeleeWeapon {
             GoldenBow bow3 = hero.belongings.getItem(GoldenBow.class);
             NaturesBow bow4 = hero.belongings.getItem(NaturesBow.class);
             CorrosionBow bow5 = hero.belongings.getItem(CorrosionBow.class);
-            if (FlameThrower.this.enchantment == null
+            if (SleepGun.this.enchantment == null
                     && Random.Int(3) < hero.pointsInTalent(Talent.SHARED_ENCHANTMENT)
                     && hero.buff(MagicImmune.class) == null
                     && bow != null
                     && bow.enchantment != null) {
                 return bow.enchantment.proc(this, attacker, defender, damage);
-            } else if (FlameThrower.this.enchantment == null
+            } else if (SleepGun.this.enchantment == null
                     && Random.Int(3) < hero.pointsInTalent(Talent.SHARED_ENCHANTMENT)
                     && hero.buff(MagicImmune.class) == null
                     && bow2 != null
                     && bow2.enchantment != null) {
                 return bow2.enchantment.proc(this, attacker, defender, damage);
-            } else if (FlameThrower.this.enchantment == null
+            } else if (SleepGun.this.enchantment == null
                     && Random.Int(3) < hero.pointsInTalent(Talent.SHARED_ENCHANTMENT)
                     && hero.buff(MagicImmune.class) == null
                     && bow3 != null
                     && bow3.enchantment != null) {
                 return bow3.enchantment.proc(this, attacker, defender, damage);
-            } else if (FlameThrower.this.enchantment == null
+            } else if (SleepGun.this.enchantment == null
                     && Random.Int(3) < hero.pointsInTalent(Talent.SHARED_ENCHANTMENT)
                     && hero.buff(MagicImmune.class) == null
                     && bow4 != null
                     && bow4.enchantment != null) {
                 return bow4.enchantment.proc(this, attacker, defender, damage);
-            } else if (FlameThrower.this.enchantment == null
+            } else if (SleepGun.this.enchantment == null
                     && Random.Int(3) < hero.pointsInTalent(Talent.SHARED_ENCHANTMENT)
                     && hero.buff(MagicImmune.class) == null
                     && bow5 != null
                     && bow5.enchantment != null) {
                 return bow5.enchantment.proc(this, attacker, defender, damage);
             } else {
-                return FlameThrower.this.proc(attacker, defender, damage);
+                return SleepGun.this.proc(attacker, defender, damage);
             }
         }
 
         @Override
         public float delayFactor(Char user) {
-            if (hero.subClass == HeroSubClass.GUNSLINGER && hero.justMoved) {
-                return 0;
+            if (hero.buff(Riot.riotTracker.class) != null) {
+                return SleepGun.this.delayFactor(user)/2f;
             } else {
-                if (hero.buff(Riot.riotTracker.class) != null) {
-                    return FlameThrower.this.delayFactor(user)/2f;
-                } else {
-                    return FlameThrower.this.delayFactor(user);
-                }
+                return SleepGun.this.delayFactor(user);
             }
         }
 
         @Override
         public int STRReq(int lvl) {
-            return FlameThrower.this.STRReq();
+            if (SleepGun.this.masteryPotionBonus) {
+                return STRReq(tier, SleepGun.this.buffedLvl()) - 2;
+            }
+            return STRReq(tier, SleepGun.this.buffedLvl());
         }
 
         @Override
-        protected void onThrow(int cell) {
-            Ballistica aim = new Ballistica(hero.pos, cell, Ballistica.WONT_STOP); //Always Projecting and no distance limit, see MissileWeapon.throwPos
-            int maxDist = maxDistance;
-            int dist = Math.min(aim.dist, maxDist);
-            ConeAOE cone = new ConeAOE(aim,
-                    dist,
-                    degree,
-                    Ballistica.STOP_TARGET | Ballistica.STOP_SOLID | Ballistica.IGNORE_SOFT_SOLID);
-            //cast to cells at the tip, rather than all cells, better performance.
-            for (Ballistica ray : cone.outerRays){
-                ((MagicMissile)hero.sprite.parent.recycle( MagicMissile.class )).reset(
-                        MagicMissile.FIRE_CONE,
-                        hero.sprite,
-                        ray.path.get(ray.dist),
-                        null
-                );
+        protected void onThrow( int cell ) {
+            float duration = SleepDartCoolDown.DURATION - 5*SleepGun.this.buffedLvl();
+            if (SleepGun.this.buffedLvl() >= 6) {
+                duration -= 20;
             }
-            ArrayList<Char> chars = new ArrayList<>();
-            for (int cells : cone.cells){
-                //knock doors open
-                if (Dungeon.level.map[cells] == Terrain.DOOR){
-                    Level.set(cells, Terrain.OPEN_DOOR);
-                    GameScene.updateMap(cells);
-                }
-
-                //only ignite cells directly near caster if they are flammable
-                if (!(Dungeon.level.adjacent(hero.pos, cells) && !Dungeon.level.flamable[cells])) {
-                    GameScene.add(Blob.seed(cells, 2, Fire.class));
-                }
-
-                Char ch = Actor.findChar(cells);
-                if (ch != null && ch.alignment != hero.alignment){
-                    chars.add(ch);
-                }
-            }
-            for (Char ch : chars) {
-                int damage = damageRoll(hero);
-                damage += Random.NormalIntRange(chars.size(), 3*chars.size()); //almost +1 upgrade effect per char
-                damage -= ch.drRoll();
-                ch.damage(damage, hero);
-            }
-            Sample.INSTANCE.play(Assets.Sounds.BURNING, 1f);
-            //final zap at 2/3 distance, for timing of the actual effect
-            MagicMissile.boltFromChar(hero.sprite.parent,
-                    MagicMissile.FIRE_CONE,
-                    hero.sprite,
-                    cone.coreRay.path.get(dist * 2 / 3),
-                    new Callback() {
-                        @Override
-                        public void call() {
-                        }
-                    });
-            if (hero.buff(InfiniteBullet.class) != null) {
-                //round preserves
-            } else if (hero.buff(Riot.riotTracker.class) != null && Random.Int(10) <= hero.pointsInTalent(Talent.ROUND_PRESERVE)-1) {
-                //round preserves
+            Buff.prolong(hero, SleepDartCoolDown.class, duration);
+            Char enemy = Actor.findChar( cell );
+            if (enemy == null || enemy == curUser) {
+                parent = null;
+                CellEmitter.get(cell).burst(SmokeParticle.FACTORY, 2);
+                CellEmitter.center(cell).burst(BlastParticle.FACTORY, 2);
             } else {
-                round --;
+                if (!curUser.shoot( enemy, this )) {
+                    CellEmitter.get(cell).burst(SmokeParticle.FACTORY, 2);
+                    CellEmitter.center(cell).burst(BlastParticle.FACTORY, 2);
+                }
             }
-            Invisibility.dispel();
+            if (enemy != null
+                    && !(enemy instanceof Goo)
+                    && !(enemy instanceof Tengu)
+                    && !(enemy instanceof DM300)
+                    && !(enemy instanceof DwarfKing)
+                    && !(enemy instanceof YogDzewa)
+                    && !(enemy instanceof Rebel)
+                    && !(enemy instanceof Hero)) {
+                new FlavourBuff(){
+                    {actPriority = VFX_PRIO;}
+                    public boolean act() {
+                        Buff.affect( enemy, MagicalSleep.class );
+                        return super.act();
+                    }
+                }.attachTo(enemy);
+            }
+            round --;
             updateQuickslot();
-            if (Dungeon.isChallenged(Challenges.DURABILITY)) {
-                FlameThrower.this.use();
-            }
         }
 
         @Override
         public void throwSound() {
-            //Play Nothing
+            Sample.INSTANCE.play( Assets.Sounds.HIT_CRUSH, 1, Random.Float(0.33f, 0.66f) );
         }
 
         @Override
@@ -477,26 +410,15 @@ public class FlameThrower extends MeleeWeapon {
     private CellSelector.Listener shooter = new CellSelector.Listener() {
         @Override
         public void onSelect( Integer target ) {
-            AmmoBelt.OverHeat overHeat = hero.buff(AmmoBelt.OverHeat.class);
             if (target != null) {
-                if (overHeat != null && Random.Float() < AmmoBelt.OverHeat.chance) {
-                    usesTargeting = false;
-                    GLog.w(Messages.get(Gun.class, "failed"));
-                    curUser.spendAndNext(Actor.TICK);
-                } else {
-                    if (target != null) {
-                        if (target == curUser.pos) {
-                            reload();
-                        } else {
-                            knockBullet().cast(curUser, target);
-                            if (hero.buff(MeleeWeapon.PrecisionShooting.class) != null &&
-                                    hero.buff(MeleeWeapon.Charger.class) != null &&
-                                    hero.buff(MeleeWeapon.PrecisionShooting.class).onUse &&
-                                    hero.buff(MeleeWeapon.Charger.class).charges >= 1) {
-                                hero.buff(MeleeWeapon.Charger.class).charges--;
-                            }
-                        }
+                if (target == curUser.pos) {
+                    if (hero.buff(GrenadeCoolDown.class) != null) {
+                        GLog.w(Messages.get(SleepGun.class, "cannot_reload"));
+                    } else {
+                        reload();
                     }
+                } else {
+                    knockBullet().cast(curUser, target);
                 }
             }
         }
@@ -505,5 +427,4 @@ public class FlameThrower extends MeleeWeapon {
             return Messages.get(SpiritBow.class, "prompt");
         }
     };
-
 }

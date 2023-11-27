@@ -24,9 +24,6 @@ package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 import com.shatteredpixel.shatteredpixeldungeon.Assets;
 import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
-import com.shatteredpixel.shatteredpixeldungeon.items.Item;
-import com.shatteredpixel.shatteredpixeldungeon.items.spells.StableAPBullet;
-import com.shatteredpixel.shatteredpixeldungeon.items.spells.StableHPBullet;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.CharSprite;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.TankSprite;
@@ -114,10 +111,10 @@ public class Tank extends Mob {
 		}
 	}
 
-	@Override
-	public Item createLoot(){
-		return Random.oneOf(new StableAPBullet(), new StableHPBullet());
-	}
+//	@Override
+//	public Item createLoot(){
+//
+//	}
 
 	private class Hunting extends Mob.Hunting{
 

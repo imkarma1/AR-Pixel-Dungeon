@@ -30,7 +30,6 @@ import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.armor.Armor;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.exotic.ScrollOfEnchantment;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.Weapon;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.CrudePistol_Energy;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Dagger_Energy;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Gloves_Energy;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Saber_Energy;
@@ -139,19 +138,6 @@ public class StoneOfEnchantment extends InventoryStone {
 	public static class Recipe4 extends com.shatteredpixel.shatteredpixeldungeon.items.Recipe.SimpleRecipe {
 
 		{
-			inputs =  new Class[]{CrudePistol_Energy.class};
-			inQuantity = new int[]{1};
-
-			cost = 15;
-
-			output = StoneOfEnchantment.class;
-			outQuantity = 2;
-		}
-	}
-
-	public static class Recipe5 extends com.shatteredpixel.shatteredpixeldungeon.items.Recipe.SimpleRecipe {
-
-		{
 			inputs =  new Class[]{WornKatana_Energy.class};
 			inQuantity = new int[]{1};
 
@@ -162,7 +148,7 @@ public class StoneOfEnchantment extends InventoryStone {
 		}
 	}
 
-	public static class Recipe6 extends com.shatteredpixel.shatteredpixeldungeon.items.Recipe.SimpleRecipe {
+	public static class Recipe5 extends com.shatteredpixel.shatteredpixeldungeon.items.Recipe.SimpleRecipe {
 
 		{
 			inputs =  new Class[]{Saber_Energy.class};

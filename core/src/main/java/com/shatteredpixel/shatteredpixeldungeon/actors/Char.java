@@ -134,9 +134,9 @@ import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfFireblast;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfFrost;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfLightning;
 import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfLivingEarth;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.CorrosionBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.GoldenBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.NaturesBow;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.CorrosionBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.SpiritBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.Weapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.WindBow;
@@ -144,98 +144,27 @@ import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Blazin
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Grim;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Kinetic;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Shocking;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AntimaterRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AntimaterRifleAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AntimaterRifleHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AssultRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AssultRifleAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AssultRifleHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AutoHandgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AutoHandgunAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AutoHandgunHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AutoRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AutoRifleAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.AutoRifleHP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.BeamSaber;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Carbine;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.CarbineAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.CarbineHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.CrudePistol;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.CrudePistolAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.CrudePistolHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.DualPistol;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.DualPistolAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.DualPistolHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.FlameThrower;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GildedShovel;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Glaive;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GoldenPistol;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GoldenPistolAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GoldenPistolHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GrenadeLauncher;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.GrenadeLauncherHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Handgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HandgunAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HandgunHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HeavyMachinegun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HeavyMachinegunAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HeavyMachinegunHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HuntingRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HuntingRifleAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.HuntingRifleHP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.IronHammer;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.KSG;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.KSGAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.KSGHP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Lance;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.LargeKatana;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.LongKatana;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Magnum;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MagnumAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MagnumHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MarksmanRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MarksmanRifleAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MarksmanRifleHP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MinersTool;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MiniGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MiniGunAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MiniGunHP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.NormalKatana;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Pistol;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.PistolAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.PistolHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.PlasmaCannon;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RPG7;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Revolver;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RevolverAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RevolverHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RocketLauncher;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.RunicDagger;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SharpKatana;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ShortKatana;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ShotGun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ShotGunAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ShotGunHP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Shovel;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Sickle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SniperRifle;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SniperRifleAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SniperRifleHP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Spade;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Spear;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SubMachinegun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SubMachinegunAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.SubMachinegunHP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TacticalHandgun;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TacticalHandgunAP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TacticalHandgunHP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.TrueRunicBlade;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WA2000;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WA2000AP;
-import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WA2000HP;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WornKatana;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WornKatana_Energy;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.gun.subweapon.GrenadeLauncher;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.Cross;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.darts.ShockingDart;
@@ -397,85 +326,7 @@ public abstract class Char extends Actor {
 		}
 
 		if (c == hero && hero.hasTalent(Talent.QUICK_RELOAD)) {
-			int chance = 2*hero.pointsInTalent(Talent.QUICK_RELOAD);
-			KindOfWeapon wep = hero.belongings.attackingWeapon();
-			KindOfWeapon eqWep = hero.belongings.weapon;
-			if (wep instanceof CrudePistol && Random.Int(100) < chance) {
-				((CrudePistol)eqWep).oneReload();
 
-			} else if (wep instanceof Pistol && Random.Int(100) < chance) {
-				((Pistol)eqWep).oneReload();
-
-			} else if (wep instanceof GoldenPistol && Random.Int(100) < chance) {
-				((GoldenPistol)eqWep).oneReload();
-
-			} else if (wep instanceof Handgun && Random.Int(100) < chance) {
-				((Handgun)eqWep).oneReload();
-
-			} else if (wep instanceof Magnum && Random.Int(100) < chance) {
-				((Magnum)eqWep).oneReload();
-
-			} else if (wep instanceof TacticalHandgun && Random.Int(100) < chance) {
-				((TacticalHandgun)eqWep).oneReload();
-
-			} else if (wep instanceof AutoHandgun && Random.Int(100) < chance) {
-				((AutoHandgun)eqWep).oneReload();
-
-			} else if (wep instanceof DualPistol && Random.Int(100) < chance*3) {
-				((DualPistol)eqWep).oneReload();
-
-			} else if (wep instanceof SubMachinegun && Random.Int(100) < chance*3) {
-				((SubMachinegun)eqWep).oneReload();
-
-			} else if (wep instanceof AssultRifle && Random.Int(100) < chance*3) {
-				((AssultRifle)eqWep).oneReload();
-
-			} else if (wep instanceof HeavyMachinegun && Random.Int(100) < chance*3) {
-				((HeavyMachinegun)eqWep).oneReload();
-
-			} else if (wep instanceof MiniGun && Random.Int(100) < chance*3) {
-				((MiniGun)eqWep).oneReload();
-
-			} else if (wep instanceof Revolver && Random.Int(100) < chance/2) {
-				((Revolver)eqWep).oneReload();
-
-			} else if (wep instanceof HuntingRifle && Random.Int(100) < chance/2) {
-				((HuntingRifle)eqWep).oneReload();
-
-			} else if (wep instanceof Carbine && Random.Int(100) < chance/2) {
-				((Carbine)eqWep).oneReload();
-
-			} else if (wep instanceof SniperRifle && Random.Int(100) < chance/2) {
-				((SniperRifle)eqWep).oneReload();
-
-			} else if (wep instanceof AntimaterRifle && Random.Int(100) < chance/2) {
-				((AntimaterRifle)eqWep).oneReload();
-
-			} else if (wep instanceof WA2000 && Random.Int(100) < chance/2) {
-				((WA2000)eqWep).oneReload();
-
-			} else if (wep instanceof MarksmanRifle && Random.Int(100) < chance/2) {
-				((MarksmanRifle)eqWep).oneReload();
-
-			} else if (wep instanceof ShotGun && Random.Int(100) < chance/2) {
-				((ShotGun)eqWep).oneReload();
-
-			} else if (wep instanceof KSG && Random.Int(100) < chance/2) {
-				((KSG)eqWep).oneReload();
-
-			} else if (wep instanceof PlasmaCannon && Random.Int(100) < chance/2) {
-				((PlasmaCannon)eqWep).oneReload();
-
-			} else if (wep instanceof FlameThrower && Random.Int(100) < chance/2) {
-				((FlameThrower)eqWep).oneReload();
-
-			} else if (wep instanceof RocketLauncher && Random.Int(100) < chance/2) {
-				((RocketLauncher)eqWep).oneReload();
-
-			} else if (wep instanceof RPG7 && Random.Int(100) < chance/2) {
-				((RPG7)eqWep).oneReload();
-
-			}
 			updateQuickslot();
 		}
 
@@ -628,61 +479,6 @@ public abstract class Char extends Actor {
 					}
 					dr = 0;
 				}
-				if ((wep instanceof CrudePistol.Bullet && (equippedWep instanceof CrudePistolAP))
-					  || (wep instanceof Pistol.Bullet && (equippedWep instanceof PistolAP))
-					  || (wep instanceof GoldenPistol.Bullet && (equippedWep instanceof GoldenPistolAP))
-					  || (wep instanceof Handgun.Bullet && (equippedWep instanceof HandgunAP))
-					  || (wep instanceof Magnum.Bullet && (equippedWep instanceof MagnumAP))
-					  || (wep instanceof TacticalHandgun.Bullet && (equippedWep instanceof TacticalHandgunAP))
-					  || (wep instanceof AutoHandgun.Bullet && (equippedWep instanceof AutoHandgunAP))
-
-					  || (wep instanceof DualPistol.Bullet && (equippedWep instanceof DualPistolAP))
-					  || (wep instanceof SubMachinegun.Bullet && (equippedWep instanceof SubMachinegunAP))
-					  || (wep instanceof AssultRifle.Bullet && (equippedWep instanceof AssultRifleAP))
-					  || (wep instanceof HeavyMachinegun.Bullet && (equippedWep instanceof HeavyMachinegunAP))
-					  || (wep instanceof MiniGun.Bullet && (equippedWep instanceof MiniGunAP))
-					  || (wep instanceof AutoRifle.Bullet && (equippedWep instanceof AutoRifleAP))
-
-					  || (wep instanceof Revolver.Bullet && (equippedWep instanceof RevolverAP))
-					  || (wep instanceof HuntingRifle.Bullet && (equippedWep instanceof HuntingRifleAP))
-					  || (wep instanceof Carbine.Bullet && (equippedWep instanceof CarbineAP))
-					  || (wep instanceof SniperRifle.Bullet && (equippedWep instanceof SniperRifleAP))
-					  || (wep instanceof AntimaterRifle.Bullet && (equippedWep instanceof AntimaterRifleAP))
-					  || (wep instanceof MarksmanRifle.Bullet && (equippedWep instanceof MarksmanRifleAP))
-					  || (wep instanceof WA2000.Bullet && (equippedWep instanceof WA2000AP))
-
-					  || (wep instanceof ShotGun.Bullet && (equippedWep instanceof ShotGunAP))
-					  || (wep instanceof KSG.Bullet && (equippedWep instanceof KSGAP))) {
-					dr = 0;
-				}
-				if ((wep instanceof CrudePistol.Bullet && (equippedWep instanceof CrudePistolHP))
-						|| (wep instanceof Pistol.Bullet && (equippedWep instanceof PistolHP))
-						|| (wep instanceof GoldenPistol.Bullet && (equippedWep instanceof GoldenPistolHP))
-						|| (wep instanceof Handgun.Bullet && (equippedWep instanceof HandgunHP))
-						|| (wep instanceof Magnum.Bullet && (equippedWep instanceof MagnumHP))
-						|| (wep instanceof TacticalHandgun.Bullet && (equippedWep instanceof TacticalHandgunHP))
-						|| (wep instanceof AutoHandgun.Bullet && (equippedWep instanceof AutoHandgunHP))
-
-						|| (wep instanceof DualPistol.Bullet && (equippedWep instanceof DualPistolHP))
-						|| (wep instanceof SubMachinegun.Bullet && (equippedWep instanceof SubMachinegunHP))
-						|| (wep instanceof AssultRifle.Bullet && (equippedWep instanceof AssultRifleHP))
-						|| (wep instanceof HeavyMachinegun.Bullet && (equippedWep instanceof HeavyMachinegunHP))
-						|| (wep instanceof MiniGun.Bullet && (equippedWep instanceof MiniGunHP))
-						|| (wep instanceof AutoRifle.Bullet && (equippedWep instanceof AutoRifleHP))
-
-						|| (wep instanceof Revolver.Bullet && (equippedWep instanceof RevolverHP))
-						|| (wep instanceof HuntingRifle.Bullet && (equippedWep instanceof HuntingRifleHP))
-						|| (wep instanceof Carbine.Bullet && (equippedWep instanceof CarbineHP))
-						|| (wep instanceof SniperRifle.Bullet && (equippedWep instanceof SniperRifleHP))
-						|| (wep instanceof AntimaterRifle.Bullet && (equippedWep instanceof AntimaterRifleHP))
-						|| (wep instanceof MarksmanRifle.Bullet && (equippedWep instanceof MarksmanRifleHP))
-						|| (wep instanceof WA2000.Bullet && (equippedWep instanceof WA2000HP))) {
-					dr *= 2;
-				}
-				if ((wep instanceof ShotGun.Bullet && (equippedWep instanceof ShotGunHP))
-						|| (wep instanceof KSG.Bullet && (equippedWep instanceof KSGHP))) {
-					dr *= 2;
-				}
 
 				if (h.buff(MonkEnergy.MonkAbility.UnarmedAbilityTracker.class) != null){
 					dr = 0;
@@ -765,16 +561,6 @@ public abstract class Char extends Actor {
 					Sample.INSTANCE.play(Assets.Sounds.BURNING);
 
 					dmg *= 1.3333f; //deals more damage to the demons and the undeads
-				}
-			}
-
-			if (this instanceof Hero) {
-				if (Dungeon.hero.belongings.attackingWeapon() instanceof AntimaterRifle.Bullet
-						|| Dungeon.hero.belongings.attackingWeapon() instanceof AntimaterRifleAP.Bullet
-						|| Dungeon.hero.belongings.attackingWeapon() instanceof AntimaterRifleHP.Bullet) {
-					int distance = Dungeon.level.distance(hero.pos, enemy.pos) - 1;
-					float multiplier = Math.min(4f, (float)Math.pow(1.2f, distance + 1));
-					dmg = Math.round(dmg * multiplier);
 				}
 			}
 
@@ -892,73 +678,6 @@ public abstract class Char extends Actor {
 			if (this instanceof Hero) {
 				if (Dungeon.hero.belongings.attackingWeapon() instanceof GrenadeLauncher.Rocket) {
 					Buff.prolong(enemy, Vulnerable.class, 5f);
-				}
-				if (Dungeon.hero.belongings.attackingWeapon() instanceof GrenadeLauncherHP.Rocket) {
-					Buff.prolong(enemy, Paralysis.class, 3f);
-				}
-				//if (Dungeon.hero.belongings.attackingWeapon() instanceof SleepGun.Dart) {
-				//	{actPriority = VFX_PRIO;}
-				//	Buff.affect(enemy, MagicalSleep.class);
-				//}
-				//if (Dungeon.hero.belongings.attackingWeapon() instanceof FrostGun.Dart) {
-				//	{actPriority = VFX_PRIO;}
-				//	Buff.affect(enemy, Frost.class, 20f);
-				//}
-				//ParalysisGun paralysisGun = new ParalysisGun();
-				//if (Dungeon.hero.belongings.attackingWeapon() instanceof ParalysisGun.Dart) {
-				//	{actPriority = VFX_PRIO;}
-				//	Buff.affect(enemy, Paralysis.class, 5f + paralysisGun.buffedLvl());
-				//}
-			}
-
-			if (this instanceof Hero){
-				Hero h = (Hero)this;
-				KindOfWeapon wep = h.belongings.weapon();
-				KindOfWeapon equippedWep = h.belongings.weapon;
-				if ((wep instanceof CrudePistol.Bullet && equippedWep instanceof CrudePistolAP)
-				 || (wep instanceof Pistol.Bullet && equippedWep instanceof PistolAP)
-				 || (wep instanceof GoldenPistol.Bullet && equippedWep instanceof GoldenPistolAP)
-				 || (wep instanceof Handgun.Bullet && equippedWep instanceof HandgunAP)
-				 || (wep instanceof Magnum.Bullet && equippedWep instanceof MagnumAP)
-				 || (wep instanceof TacticalHandgun.Bullet && equippedWep instanceof TacticalHandgunAP)
-				 || (wep instanceof AutoHandgun.Bullet && equippedWep instanceof AutoHandgunAP)
-				 || (wep instanceof DualPistol.Bullet && equippedWep instanceof DualPistolAP)
-				 || (wep instanceof SubMachinegun.Bullet && equippedWep instanceof SubMachinegunAP)
-				 || (wep instanceof AssultRifle.Bullet && equippedWep instanceof AssultRifleAP)
-				 || (wep instanceof HeavyMachinegun.Bullet && equippedWep instanceof HeavyMachinegunAP)
-				 || (wep instanceof MiniGun.Bullet && equippedWep instanceof MiniGunAP)
-				 || (wep instanceof AutoRifle.Bullet && equippedWep instanceof AutoRifleAP)
-				 || (wep instanceof Revolver.Bullet && equippedWep instanceof RevolverAP)
-				 || (wep instanceof HuntingRifle.Bullet && equippedWep instanceof HuntingRifleAP)
-				 || (wep instanceof Carbine.Bullet && equippedWep instanceof CarbineAP)
-				 || (wep instanceof SniperRifle.Bullet && equippedWep instanceof SniperRifleAP)
-				 || (wep instanceof AntimaterRifle.Bullet && equippedWep instanceof AntimaterRifleAP)
-				 || (wep instanceof MarksmanRifle.Bullet && equippedWep instanceof MarksmanRifleAP)
-				 || (wep instanceof WA2000.Bullet && equippedWep instanceof WA2000AP)
-				) {
-					dmg *= 0.80f;
-				} else if ((wep instanceof CrudePistol.Bullet && equippedWep instanceof CrudePistolHP)
-						|| (wep instanceof Pistol.Bullet && equippedWep instanceof PistolHP)
-						|| (wep instanceof GoldenPistol.Bullet && equippedWep instanceof GoldenPistolHP)
-						|| (wep instanceof Handgun.Bullet && equippedWep instanceof HandgunHP)
-						|| (wep instanceof Magnum.Bullet && equippedWep instanceof MagnumHP)
-						|| (wep instanceof TacticalHandgun.Bullet && equippedWep instanceof TacticalHandgunHP)
-						|| (wep instanceof AutoHandgun.Bullet && equippedWep instanceof AutoHandgunHP)
-						|| (wep instanceof DualPistol.Bullet && equippedWep instanceof DualPistolHP)
-						|| (wep instanceof SubMachinegun.Bullet && equippedWep instanceof SubMachinegunHP)
-						|| (wep instanceof AssultRifle.Bullet && equippedWep instanceof AssultRifleHP)
-						|| (wep instanceof HeavyMachinegun.Bullet && equippedWep instanceof HeavyMachinegunHP)
-						|| (wep instanceof MiniGun.Bullet && equippedWep instanceof MiniGunHP)
-						|| (wep instanceof AutoRifle.Bullet && equippedWep instanceof AutoRifleHP)
-						|| (wep instanceof Revolver.Bullet && equippedWep instanceof RevolverHP)
-						|| (wep instanceof HuntingRifle.Bullet && equippedWep instanceof HuntingRifleHP)
-						|| (wep instanceof Carbine.Bullet && equippedWep instanceof CarbineHP)
-						|| (wep instanceof SniperRifle.Bullet && equippedWep instanceof SniperRifleHP)
-						|| (wep instanceof AntimaterRifle.Bullet && equippedWep instanceof AntimaterRifleHP)
-						|| (wep instanceof MarksmanRifle.Bullet && equippedWep instanceof MarksmanRifleHP)
-						|| (wep instanceof WA2000.Bullet && equippedWep instanceof WA2000HP)
-				) {
-					dmg *= 1.3f;
 				}
 			}
 

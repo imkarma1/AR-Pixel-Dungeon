@@ -136,6 +136,8 @@ import com.shatteredpixel.shatteredpixeldungeon.items.weapon.CorrosionBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.SpiritBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.WindBow;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.*;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.gun.subweapon.GrenadeLauncher;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.gun.subweapon.SleepGun;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.spellbook.SpellBook_Blast;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.spellbook.SpellBook_Blast_Sword;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.spellbook.SpellBook_Corrosion;
@@ -379,13 +381,12 @@ public class Generator {
 					Dagger.class,
 					Gloves.class,
 					Rapier.class,
-					CrudePistol.class,
 					WornKatana.class,
 					Shovel.class,
 					Saber.class,
 					HealBook.class
 			};
-			WEP_T1.defaultProbs = new float[]{ 1, 0, 1, 1, 1, 1, 1, 0, 1, 1 };
+			WEP_T1.defaultProbs = new float[]{ 1, 0, 1, 1, 1, 1, 0, 1, 1 };
 			WEP_T1.probs = WEP_T1.defaultProbs.clone();
 
 			WEP_T2.classes = new Class<?>[]{
@@ -395,9 +396,6 @@ public class Generator {
 					Quarterstaff.class,
 					Dirk.class,
 					Sickle.class,
-					Pistol.class,
-					DualPistol.class,
-					Revolver.class,
 					ShortKatana.class,
 					Knife.class,
 					Nunchaku.class,
@@ -413,10 +411,6 @@ public class Generator {
 					RoundShield.class,
 					Sai.class,
 					Whip.class,
-					GoldenPistol.class,
-					SubMachinegun.class,
-					ShotGun.class,
-					HuntingRifle.class,
 					NormalKatana.class,
 					Bible.class,
 					RunicDagger.class
@@ -432,9 +426,6 @@ public class Generator {
 					AssassinsBlade.class,
 					Crossbow.class,
 					Katana.class,
-					Handgun.class,
-					AssultRifle.class,
-					Carbine.class,
 					LongKatana.class,
 					Scythe.class
 			};
@@ -449,9 +440,6 @@ public class Generator {
 					Greatshield.class,
 					Gauntlet.class,
 					WarScythe.class,
-					Magnum.class,
-					HeavyMachinegun.class,
-					SniperRifle.class,
 					RocketLauncher.class,
 					FlameThrower.class,
 					PlasmaCannon.class,
@@ -463,40 +451,30 @@ public class Generator {
 			WEP_T5.probs = WEP_T5.defaultProbs.clone();
 
 			GUN_T1.classes = new Class<?>[]{
-					CrudePistol.class
+
 			};
 			GUN_T1.defaultProbs = new float[]{ 2 };
 			GUN_T1.probs = GUN_T1.defaultProbs.clone();
 
 			GUN_T2.classes = new Class<?>[]{
-					Pistol.class,
-					Revolver.class,
-					DualPistol.class
+
 			};
 			GUN_T2.defaultProbs = new float[]{ 2, 2, 2 };
 			GUN_T2.probs = GUN_T2.defaultProbs.clone();
 
 			GUN_T3.classes = new Class<?>[]{
-					GoldenPistol.class,
-					HuntingRifle.class,
-					SubMachinegun.class,
-					ShotGun.class
+
 			};
 			GUN_T3.defaultProbs = new float[]{ 2, 2, 2, 2 };
 			GUN_T3.probs = GUN_T3.defaultProbs.clone();
 
 			GUN_T4.classes = new Class<?>[]{
-					Handgun.class,
-					Carbine.class,
-					AssultRifle.class
+
 			};
 			GUN_T4.defaultProbs = new float[]{ 2, 2, 2 };
 			GUN_T4.probs = GUN_T4.defaultProbs.clone();
 
 			GUN_T5.classes = new Class<?>[]{
-					Magnum.class,
-					SniperRifle.class,
-					HeavyMachinegun.class,
 					RocketLauncher.class,
 					FlameThrower.class,
 					PlasmaCannon.class
@@ -634,11 +612,6 @@ public class Generator {
 					NaturesBow.class,
 					GoldenBow.class,
 					CorrosionBow.class,
-					TacticalHandgun.class,
-					MiniGun.class,
-					AntimaterRifle.class,
-					KSG.class,
-					RPG7.class,
 			};
 			ADVANCED.defaultProbs = new float[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 			ADVANCED.probs = ADVANCED.defaultProbs.clone();
@@ -660,14 +633,9 @@ public class Generator {
 					HolySword.class,
 					DoubleGreatSword.class,
 					ChaosSword.class,
-					AutoHandgun.class,
-					AutoRifle.class,
-					MarksmanRifle.class,
-					WA2000.class,
 					WornShortsword_Energy.class,
 					Dagger_Energy.class,
 					Gloves_Energy.class,
-					CrudePistol_Energy.class,
 					WornKatana_Energy.class,
 					Saber_Energy.class,
 					Rapier_Energy.class
@@ -708,11 +676,7 @@ public class Generator {
 
 			SUBWEAPON.classes = new Class<?>[]{
 					GrenadeLauncher.class,
-					GrenadeLauncherAP.class,
-					GrenadeLauncherHP.class,
 					SleepGun.class,
-					FrostGun.class,
-					ParalysisGun.class,
 					StunGun.class,
 					StunGunAP.class,
 					StunGunHP.class,

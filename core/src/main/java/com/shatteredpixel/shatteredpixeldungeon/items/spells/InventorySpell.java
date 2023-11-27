@@ -21,15 +21,12 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.items.spells;
 
-import com.shatteredpixel.shatteredpixeldungeon.Assets;
-import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Invisibility;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.bags.Bag;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
 import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
 import com.shatteredpixel.shatteredpixeldungeon.windows.WndBag;
-import com.watabou.noosa.audio.Sample;
 
 public abstract class InventorySpell extends Spell {
 	
@@ -81,14 +78,6 @@ public abstract class InventorySpell extends Spell {
 				curItem = detach(curUser.belongings.backpack);
 
 				((InventorySpell)curItem).onItemSelected( item );
-				if (!(InventorySpell.this instanceof GunSmithingTool)) {
-					curUser.spend( 1f );
-					curUser.busy();
-					(curUser.sprite).operate( curUser.pos );
-
-					Sample.INSTANCE.play( Assets.Sounds.READ );
-					Invisibility.dispel();
-				}
 
 			}
 		}
