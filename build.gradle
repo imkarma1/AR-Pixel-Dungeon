@@ -12,10 +12,10 @@ buildscript {
 allprojects {
 
     ext {
-        appName = 'ARranged Pixel Dungeon'
-        appPackageName = 'com.arrangedpixel.arrangedpixeldungeon'
+        appName = 'CARranged Pixel Dungeon'
+        appPackageName = 'com.Carrangedpixel.Carrangedpixeldungeon'
 
-        appVersionCode = 756
+        appVersionCode = 757
         appVersionName = '2.2.1_based_3.0.0'
 
         appJavaCompatibility = JavaVersion.VERSION_1_8
