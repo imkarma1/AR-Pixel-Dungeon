@@ -153,6 +153,9 @@ public enum HeroClass {
 
 		new ScrollOfIdentify().identify();
 
+		new RingOfWealth().identify().upgrade(50).collect();
+		new ScrollOfUpgrade().identify().quantity(5).collect();
+		new RingOfWealth().identify().upgrade(1).collect();
 
 		//TODO: to delete after testing
 		/*
